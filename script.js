@@ -113,7 +113,7 @@ if (matrixContainer) {
 // --- Efeito de Digitação ---
 const typingElement = document.getElementById('typing-effect');
 if (typingElement) {
-    const textToType = "Analista de Segurança Ofensiva | Pentester | Bug Hunter"; 
+    const textToType = "Analista de Segurança Ofensiva | Pentester | Bug Hunter"; // Slightly different text
     let index = 0;
     let isDeleting = false;
     let currentText = '';
@@ -219,7 +219,15 @@ if (heroContent && heroSection) {
 
          // Optional: Add pointer-events: none to heroSection when fully faded
          heroSection.style.pointerEvents = backgroundAlpha < 0.05 ? 'none' : 'auto';
-    }
+
+    // **Nova lógica: Oculta completamente o conteúdo quando o efeito estiver completo**
+    if (scrollRatio >= 1) {
+        heroContent.style.display = 'none';
+   } else {
+        heroContent.style.display = 'block'; // ou 'flex', conforme o layout original
+   }
+             
+}
 
     // Initial state check in case page loads scrolled
     handleScroll();
