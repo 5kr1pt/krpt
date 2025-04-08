@@ -1,0 +1,562 @@
+:root {
+    /* New Palette: Dark with Vibrant Green Accent */
+    --bg-color: #0a0f14;         /* Very dark blue/black */
+    --primary-color: #00ff9c;    /* Vibrant Mint Green */
+    --secondary-color: #4a5568;  /* Cool Gray */
+    --text-color: #cbd5e1;       /* Light Gray */
+    --text-muted: #94a3b8;       /* Slate Gray */
+    --border-color: #2d3748;      /* Darker Gray Blue */
+    --card-bg: #1a202c;         /* Dark Gray Blue */
+    --accent-color: #f7fafc;      /* Almost White */
+    --cover-overlay-rgb: 10, 15, 20; /* Extract RGB for easier JS manipulation */
+    --cover-overlay-alpha: 0.8;      /* Initial alpha */
+    --cover-overlay-color: rgba(var(--cover-overlay-rgb), var(--cover-overlay-alpha)); /* Reconstruct color */
+    --placeholder-bg: #2d3748;   /* Darker Placeholder color */
+
+    /* Font styles remain the same */
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Roboto Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.08; /* Slightly more visible matrix */
+    pointer-events: none;
+}
+
+header {
+    background: rgba(10, 15, 20, 0.85); /* Use new --bg-color base with alpha */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2.5rem;
+}
+
+nav ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color); /* Hover with new accent */
+}
+
+.hero {
+    text-align: center;
+    padding: 0; /* Remove padding from hero directly */
+    color: var(--text-color);
+    position: relative;
+    background-color: var(--cover-overlay-color);
+    min-height: auto; /* Remove fixed min-height, let content define it */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.1s linear;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 1rem 3rem; /* Reduce top and bottom padding */
+    transform-origin: center center;
+    transition: opacity 0.1s linear, transform 0.1s linear, filter 0.1s linear, padding 0.1s linear;
+}
+
+.hero h1 {
+    font-family: var(--font-primary);
+    font-size: 3.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.hero .subtitle {
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    color: var(--primary-color); /* Use new accent color */
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+#typing-effect {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--text-muted);
+    min-height: 20px;
+    display: inline-block;
+}
+
+#typing-effect::after { /* Cursor piscando */
+    content: '_';
+    margin-left: 5px;
+    opacity: 1;
+    animation: blink 1s step-end infinite;
+    color: var(--primary-color); /* Use new accent color for cursor */
+}
+
+@keyframes blink {
+    from, to { opacity: 1 }
+    50% { opacity: 0 }
+}
+
+main {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    padding: 3.5rem 1.5rem;
+    margin-bottom: 3rem;
+    background-color: var(--card-bg); /* Darker card background */
+    border: 1px solid var(--border-color); /* Darker border */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px); /* Slightly more lift */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    border-color: var(--primary-color); /* Highlight border on hover */
+}
+
+section h2 {
+    font-family: var(--font-primary);
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px; /* Slightly thicker */
+    background-color: var(--primary-color); /* Use new accent color */
+    border-radius: 1.5px;
+}
+
+#sobre .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#sobre .profile-picture-container {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color); /* Use new accent color */
+    background-color: var(--placeholder-bg); /* Use new placeholder color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.xss-header {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  
+  .xss-original {
+    color: white; /* ou use "transparent" para deixar em branco */
+  }
+  
+  .xss-payload {
+    color: green;
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 10px;
+  }
+
+  /* Classe principal do seu título */
+.xss-title {
+    position: relative;
+    font-family: var(--font-primary);
+    color: var(--accent-color); 
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    padding-bottom: 0.8rem;
+    font-weight: 900;
+  }
+  
+  /* Mantém a linha decorativa abaixo do título, 
+     caso você tenha esse efeito */
+  .xss-title::after {
+    content: '';
+    position: absolute;
+    left: 54%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 190px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 1.5px;
+  }
+  
+  /* Trechos em branco */
+  .white-part {
+    color: #fff; /* ou var(--accent-color), se preferir */
+  }
+  
+  /* Trechos em verde */
+  .green-part {
+    color: #0f0; /* ou use var(--primary-color) se quiser o verde do tema */
+    font-family: 'Roboto Mono', monospace; /* pra destacar como 'código' */
+  }
+
+#sobre .profile-picture-placeholder {
+    /* O placeholder passa a ser nossa "base" para a foto */
+    width: 100%;
+    height: 100%;
+    background-image: url('foto.jpg'); 
+    background-size: cover;       
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Some com o SVG do placeholder para não ficar por cima da imagem */
+  #sobre .profile-picture-placeholder svg {
+    display: none;
+  }
+
+#sobre .about-text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+#sobre .about-text p {
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    #sobre .about-container {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+}
+
+/* Grid de Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background-color: var(--bg-color); /* Darker base */
+    padding: 1.8rem 1.5rem;
+    border-left: 4px solid var(--primary-color); /* Thicker accent border */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-left-color 0.3s ease, transform 0.2s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skill-card:hover {
+    background-color: var(--card-bg); /* Hover uses card background */
+    border-left-color: var(--accent-color); /* Use bright accent for hover border */
+    transform: scale(1.02); /* Subtle scale effect */
+}
+
+.skill-card .icon {
+    width: 36px;
+    height: 36px;
+    color: var(--primary-color); /* Use new accent color */
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.skill-card h3 {
+    font-family: var(--font-primary);
+    color: var(--accent-color);
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.skill-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Grid de Projetos */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background-color: var(--bg-color); /* Darker base */
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+     border-color: var(--primary-color); /* Use new accent color for border */
+     transform: translateY(-3px);
+     background-color: var(--card-bg); /* Hover uses card background */
+}
+
+.project-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+     color: var(--text-muted);
+}
+
+.project-card .tag {
+    display: inline-block;
+    background-color: var(--primary-color); /* Use new accent color */
+    color: var(--bg-color); /* Dark text for contrast */
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Timeline de Experiência */
+.timeline {
+    position: relative;
+    padding-left: 35px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: var(--border-color); /* Darker border color */
+    border-radius: 1px;
+}
+
+.timeline-item {
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -19px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color); /* Use new accent color */
+    border-radius: 50%;
+    border: 2px solid var(--bg-color); /* Border matching background */
+    box-shadow: 0 0 8px var(--primary-color); /* Add subtle glow matching accent */
+}
+
+.timeline-content h3 {
+    color: var(--accent-color);
+    font-family: var(--font-primary);
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.timeline-content .date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+     font-family: var(--font-secondary);
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Seção de Contato */
+#contato p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+}
+
+.contact-links {
+    text-align: center;
+}
+
+/* Updated Button Style */
+.btn {
+    display: inline-block;
+    background-color: transparent; /* Transparent background */
+    color: var(--primary-color); /* Text color is accent */
+    border: 2px solid var(--primary-color); /* Border is accent */
+    padding: 0.7rem 1.8rem;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0.5rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-color); /* Fill with accent on hover */
+    color: var(--bg-color); /* Text becomes dark */
+    border-color: var(--primary-color);
+    transform: translateY(-3px); /* More lift */
+    box-shadow: 0 4px 12px rgba(0, 255, 156, 0.3); /* Glow effect matching accent */
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+     .hero-content {
+        padding: 3rem 1rem 2.5rem; /* Adjust padding for smaller screens */
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    section {
+        padding: 3rem 1rem;
+    }
+    .skills-grid, .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .timeline {
+        padding-left: 25px; /* Adjust for smaller screens */
+    }
+    .timeline-dot {
+        left: -1px; /* Adjust dot position slightly */
+    }
+}
+
+@media (max-width: 480px) {
+    #sobre .profile-picture-container {
+        width: 140px;
+        height: 140px;
+    }
+    /* Remove fixed min-height for hero on smallest screens */
+    /* .hero {
+        min-height: 300px;
+    } */
+    .hero h1 {
+        font-size: 2rem;
+    }
+     .hero-content {
+        padding: 2.5rem 1rem 2rem; /* Further adjust padding */
+    }
+}
+
+#sobre .profile-picture-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
