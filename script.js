@@ -113,7 +113,7 @@ if (matrixContainer) {
 // --- Efeito de Digitação ---
 const typingElement = document.getElementById('typing-effect');
 if (typingElement) {
-    const textToType = "Analista de Segurança Ofensiva | Pentester | Bug Hunter"; // Slightly different text
+    const textToType = "Analista de Segurança Ofensiva | Pentester | Bug Hunter"; 
     let index = 0;
     let isDeleting = false;
     let currentText = '';
