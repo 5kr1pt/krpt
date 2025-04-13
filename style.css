@@ -64,6 +64,27 @@ nav {
     display: flex;
     justify-content: center;
     padding: 0 1rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+nav.hidden {
+    transform: translateY(-150%);
+    opacity: 0;
+}
+
+/* Estilos para o botão de toggle */
+#menu-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color); /* ou outra cor que combine */
+    color: var(--bg-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: none; /* escondido por padrão */
+    z-index: 1101;
+    cursor: pointer;
 }
 
 nav ul {
