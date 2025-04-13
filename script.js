@@ -163,25 +163,32 @@ if (heroContent && heroSection) {
     function handleScroll() {
         const scrollY = window.scrollY;
         const scrollRatio = effectDistance > 0 ? Math.min(scrollY / effectDistance, 1) : 0;
-
+    
         const contentOpacity = 1 - scrollRatio;
         const scale = 1 - scrollRatio * 0.1;
         const blur = scrollRatio * 8;
         const backgroundAlpha = initialBgAlpha * (1 - scrollRatio);
         const paddingTop = initialPaddingTop * (1 - Math.min(scrollRatio * 1.2, 1));
         const paddingBottom = initialPaddingBottom * (1 - Math.min(scrollRatio * 1.2, 1));
-
+    
         heroContent.style.opacity = contentOpacity;
         heroContent.style.transform = `scale(${scale})`;
         heroContent.style.filter = `blur(${blur}px)`;
         heroContent.style.paddingTop = `${paddingTop}rem`;
         heroContent.style.paddingBottom = `${paddingBottom}rem`;
         heroContent.style.pointerEvents = contentOpacity < 0.1 ? 'none' : 'auto';
+    
         heroSection.style.backgroundColor = `rgba(10, 15, 20, ${backgroundAlpha})`;
         heroSection.style.pointerEvents = backgroundAlpha < 0.05 ? 'none' : 'auto';
-
-        if (scrollRatio >= 1) {
-            heroContent.style.display = 'none';
+    
+        // Se o scroll estiver praticamente completo, espera um pouco antes de setar o display none
+        if (scrollRatio >= 0.98) {
+            setTimeout(() => {
+                // Confirma que o usuário não rolou para cima durante o delay
+                if (window.scrollY / effectDistance >= 0.98) {
+                    heroContent.style.display = 'none';
+                }
+            }, 200);
         } else {
             heroContent.style.display = 'block';
         }
