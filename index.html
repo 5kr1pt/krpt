@@ -1,235 +1,295 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifólio - KRPT</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfólio de Paulo '5kr1pt' Werneck. Cibersegurança, pentest e projetos." />
+  <title>Portfólio | 5kr1pt</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js via import map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
       }
-    </script>
+    }
+  </script>
 </head>
 <body>
-    <div id="matrix-bg"></div> 
+  <!-- Matrix background -->
+  <div id="matrix-bg" aria-hidden="true"></div>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#experiencia">Experiências</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-        <div class="hero" id="hero-section">
-            <div class="hero-content">
-                <h1>Paulo <i>"5kr1pt"</i> Werneck </h1>
-                <p class="subtitle">Analista de Infraestrutura e Cibersegurança</p>
-                <div id="typing-effect"></div>
-            </div>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menu">☰</button>
+      <ul id="nav-list" class="nav-list" role="menu">
+        <li role="none"><a role="menuitem" href="#sobre">Sobre</a></li>
+        <li role="none"><a role="menuitem" href="#habilidades">Habilidades</a></li>
+        <li role="none"><a role="menuitem" href="#projetos">Projetos</a></li>
+        <li role="none"><a role="menuitem" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero" id="hero-section">
+      <div class="hero-content">
+        <h1>Paulo <i>“5kr1pt”</i> Werneck</h1>
+        <p class="subtitle">Analista de Infraestrutura e Cibersegurança</p>
+        <div id="typing-effect" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre" aria-labelledby="h-sobre">
+      <h2 id="h-sobre" class="xss-title">
+        <span class="green-part">&lt;script&gt;alert('</span>
+        <span class="white-part">Sobre Mim</span>
+        <span class="green-part">')&lt;/script&gt;</span>
+      </h2>
+
+      <div class="about-container">
+        <div class="profile-picture-container" aria-hidden="true">
+          <div class="profile-picture-placeholder" title="Foto de perfil"></div>
         </div>
-    </header>
+          <div class="about-text">
+            <p><span class="hello-world">Hello World!</span><br><br> Me chamo Paulo Galino Werneck, mas na comunidade de segurança o pessoal me chama de <strong>5kr1pt</strong> ou <strong>KRPT</strong>. Trabalho com infraestrutura e cibersegurança e gosto de colocar a mão na massa. Sempre busco entender como as coisas funcionam, explorar novas tecnologias e transformar isso em soluções que realmente aumentam a segurança e a eficiência dos sistemas.</p>
+            <p>Costumo simular ataques de forma controlada para encontrar falhas antes que alguém mal-intencionado encontre. Isso me ajuda a criar defesas mais sólidas e práticas. Gosto de aprender junto com o time, trocar ideias e pensar em formas novas de resolver problemas. Quero estar em um ambiente onde eu possa crescer, contribuir de verdade e ajudar a proteger algo grande, que impacte a vida de milhões de pessoas.</p>
+          </div>
+      </div>
+    </section>
 
-    <button id="menu-toggle" class="menu-toggle">☰</button>
+    <section id="habilidades" aria-labelledby="h-hab">
+      <h2 id="h-hab">Habilidades Técnicas</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Pentesting</h3>
+          <p>Testes de intrusão com Metasploit, Burp Suite e Nmap para prevenir ataques.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Malware</h3>
+          <p>Análise em sandbox e engenharia reversa básica para detectar e conter ameaças.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Redes</h3>
+          <p>Monitoramento com Wireshark e configuração segura de firewalls e VLANs.</p>
+        </div>
+        <div class="skill-card">
+          <h3>IAM</h3>
+          <p>Gerenciamento de acessos no Azure AD e implementação de MFA.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Compliance</h3>
+          <p>Aplicação prática de LGPD e GDPR em políticas e processos internos.</p>
+        </div>
+        <div class="skill-card">
+          <h3>SIEM</h3>
+          <p>Monitoramento e correlação de eventos com Microsoft Sentinel e Splunk.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Análise Forense</h3>
+          <p>Coleta e preservação de evidências digitais com FTK Imager e Autopsy.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud Security</h3>
+          <p>Proteção de workloads no Azure com base na certificação SC-900.</p>
+        </div>
+        <div class="skill-card">
+          <h3>VMware e Virtualização</h3>
+          <p>Administração de ESXi e vCenter, provisionamento de VMs e migração de storage.</p>
+        </div>
+      </div>
+    </section>
 
-    <main>
-        <section id="sobre">
-            <h2 class="xss-title">
-                
-                <!-- 2) <script>alert(' (em verde) -->
-                <span class="green-part">&lt;script&gt;alert('</span>
-                
-                <!-- 3) "Sobre Mim" dentro do alert, em branco -->
-                <span class="white-part">Sobre Mim</span>
-                
-                <!-- 4) ')</script> (em verde) -->
-                <span class="green-part">')&lt;/script&gt;</span>
-              </h2>
-            <div class="about-container">
-                <div class="profile-picture-container">
-                    <div class="profile-picture-placeholder">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.33 4 18V20H20V18C20 15.33 14.67 14 12 14Z"/></svg>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>Olá! Sou o Paulo Galino Werneck, também conhecido como 5kr1pt ou KRPT na comunidade, um profissional apaixonado por cibersegurança com experiência em pentesting, análise de vulnerabilidades, segurança de redes, etc. Meu objetivo é proteger sistemas e dados contra ameaças digitais, utilizando as melhores práticas e ferramentas do mercado.</p>
-                    <p>Estou sempre em busca de aprendizado e evolução na área de segurança da informação, acompanhando as principais tendências e tecnologias do setor, sempre com foco na ética profissional como princípio essencial.</p>
-                </div>
-            </div>
-        </section>
+<section id="projetos" aria-labelledby="h-proj">
+  <h2 id="h-proj">Projetos Destacados</h2>
 
-        <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M12 1L1 5V11C1 16.55 5.34 21.73 12 23C18.66 21.73 23 16.55 23 11V5L12 1ZM11 7H13V12H11V7ZM11 14H13V16H11V14Z"/></svg>
-                    <h3>Pentesting</h3>
-                    <p>Metodologias (OWASP), Ferramentas (Metasploit, Burp Suite, Nmap)</p>
-                </div>
-                <div class="skill-card">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M19 11.5C19 10.12 17.88 9 16.5 9C15.12 9 14 10.12 14 11.5C14 12.88 15.12 14 16.5 14C17.88 14 19 12.88 19 11.5Z M11.5 9C10.12 9 9 10.12 9 11.5C9 12.88 10.12 14 11.5 14C12.88 14 14 12.88 14 11.5C14 10.12 12.88 9 11.5 9Z M7.5 9C6.12 9 5 10.12 5 11.5C5 12.88 6.12 14 7.5 14C8.88 14 10 12.88 10 11.5C10 10.12 8.88 9 7.5 9Z M16.5 16C14.09 16 12.04 17.1 10.6 18.61L12 20H22V18C22 16.89 19.21 16 16.5 16Z M7.5 16C4.79 16 2 16.89 2 18V20H9.39C8.04 18.6 5.91 17.33 7.5 16Z"/></svg>
-                    <h3>Malware</h3>
-                    <p>Engenharia Reversa, Análise Estática/Dinâmica, DIE, PEstudio, HxD</p>
-                </div>
-                <div class="skill-card">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM4 6H20V8H4V6ZM14 16H4V10H14V16ZM20 18H4V16.5H14V17.5H15V10.5H20V18Z"/></svg>
-                    <h3>Segurança de Redes</h3>
-                    <p>Firewalls, IDS/IPS, VPNs, Protocolos TCP/IP</p>
-                </div>
-                 <div class="skill-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.33 4 18V20H20V18C20 15.33 14.67 14 12 14Z"/></svg>
-                    <h3>IAM</h3>
-                    <p>Autenticação Multifator (MFA), Ambiente Azure, AD</p>
-                </div>
-                 <div class="skill-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M9.4 16.6L4.8 12L3.4 13.4L9.4 19.4L20.4 8.4L19 7L9.4 16.6Z"/></svg>
-                    <h3>Compliance</h3>
-                    <p>LGPD, ISO 27001, NIST, GDPR, HIPAA</p>
-                </div>
-                <div class="skill-card">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon"><path d="M7 14H5V17H7V14M19 14H17V17H19V14M3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5M5 5H19V7H5V5M5 9H19V12H5V9Z"/></svg>
-                    <h3>Ferramentas SIEM</h3>
-                    <p>Splunk, ELK Stack, MS Sentinel</p>
-                </div>
-            </div>
-        </section>
+  <div class="project-grid">
+    <!-- cards... -->
+    <div class="project-card">
+      <h3><a href="https://github.com/5kr1pt/jwt-wizard" target="_blank" rel="noopener">JWT Wizard</a></h3>
+      <p>CLI em Python para decodificar, editar e reassinar JWTs. Foco em labs e CTFs.</p>
+      <span class="tag">Python</span> <span class="tag">JWT</span> <span class="tag">CLI</span>
+    </div>
 
-        <section id="projetos">
-            <h2>Projetos Destacados</h2>
-             <div class="project-grid">
-                <div class="project-card">
-                    <h3>Análise de Vulnerabilidade em Aplicação Web</h3>
-                    <p>Identificação e exploração de falhas XSS, SQL Injection, SSRF, LFI em aplicações em produção, como o sistema de Gestão de RH do Hospital e de Gestão de Saúde além de aplicações simuladas em CTFs. Relatórios detalhados com recomendações de correção.</p>
-                    <span class="tag">Pentest Web</span> <span class="tag">OWASP</span> <span class="tag">CTF</span>
-                </div>
-                <div class="project-card">
-                    <h3>Configuração de Honeypot</h3>
-                    <p>Implementação e monitoramento de um honeypot no hospital para coleta e análise de táticas de ataque em tempo real.</p>
-                     <span class="tag">Defesa</span> <span class="tag">Monitoramento</span> <span class="tag">Análise</span>
-                </div>
-                 <div class="project-card">
-                    <h3>Desenvolvimento de Script de Automação de Segurança</h3>
-                    <p>Criação de scripts (Python/Bash) para automatizar tarefas repetitivas de verificação de segurança em servidores Linux, análise de arquivos estáticos e obfuscador de arquivos (ObfAll).</p>
-                     <span class="tag">Automação</span> <span class="tag">Scripting</span> <span class="tag">Linux</span>
-                </div>
-            </div>
-        </section>
+    <div class="project-card">
+      <h3>Azure Sentinel Mini-Pack</h3>
+      <p>Conjunto de 10 regras KQL + 4 playbooks de resposta para detecção rápida no Microsoft Sentinel.</p>
+      <span class="tag">Azure</span> <span class="tag">KQL</span> <span class="tag">SIEM</span>
+    </div>
 
-        <section id="experiencia">
-            <h2>Experiência</h2>
-            <div class="timeline">
-              <!-- Item: Analista de Infraestrutura Jr. -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <h3>Analista de Infraestrutura e Cibersegurança - Hospital Santa Marcelina (Matriz)</h3>
-                  <span class="date">Junho/2024 - Atual</span>
-                  <p>
-                    Atualmente, atuo na área de infraestrutura e segurança com envolvimento em diversas frentes da tecnologia:
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Análise de Vulnerabilidades</strong> Responsável por realizar varreduras e análises técnicas em ambientes de TI, identificando possíveis vulnerabilidades em sistemas, aplicações, redes e dispositivos. Atuo na avaliação dos riscos associados, elaboração de relatórios técnicos e recomendação de ações corretivas, garantindo maior segurança, conformidade e proteção dos ativos da organização.
-                    </li>
-                    <li>
-                      <strong>Segurança da Informação e Infraestrutura:</strong> Planejamento, implementação e monitoramento de soluções de TI, redes, gestão de servidor, atuando de forma preventiva e corretiva em incidentes de segurança e na criação de servidores e VMs para integração dos sistemas.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <!-- Item: Analista de Sistemas Jr. -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <h3>Analista de Sistemas Jr. - Hospital Santa Marcelina (Matriz)</h3>
-                  <span class="date">Julho/2023 - Junho/2024</span>
-                  <p>
-                    Promovido a Analista de Sistemas Jr., apliquei e expandi meus conhecimentos tecnológicos, contribuindo para a evolução dos processos internos do hospital.
-                  </p>
-                </div>
-              </div>
-              
-              <!-- Item: Helpdesk -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <h3>Helpdesk - Hospital Santa Marcelina (Matriz)</h3>
-                  <span class="date">Julho/2022 - Julho/2023</span>
-                  <p>
-                    Iniciei minha trajetória com um papel crucial no suporte telefônico e assistência remota, desenvolvendo habilidades excepcionais em atendimento aos usuários.
-                  </p>
-                </div>
-              </div>
-        </section>
-              
-            <section id="experiencia">
-                <h2>Certificações</h2>
-                <div class="timeline">        
-              
-              <!-- Item: Certificação Microsoft SC-900 (permanece inalterada) -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content certification">
-                  <h3>Certificação Microsoft SC-900</h3>
-                  <span class="date">Fev/2025</span>
-                  <p>
-                    Certificação que valida conhecimentos essenciais em segurança da informação, conformidade regulatória e identidade, demonstrando comprometimento e expertise na área.
-                  </p>
-                  <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn">Ver Credencial</a>
-                </div>
-              </div>
-              <!-- Item: Certificação Microsoft SC-900 (permanece inalterada) -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content certification">
-                  <h3>Certificação Pentest do Zero ao Profisional v2023</h3>
-                  <span class="date">Mai/2023</span>
-                  <p>
-                    Certificação que ajudou a reforçar meus conhecimentos em pentesting e análise de vulnerabilidades Web.
-                  </p>
-                  <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn">Ver Credencial</a>
-                </div>
-              </div>
+    <div class="project-card">
+      <h3><a href="https://github.com/5kr1pt/jwt-playground" target="_blank" rel="noopener">JWT Playground</a></h3>
+      <p>Web app para criar, inspecionar e manipular tokens no navegador. Uso educacional.</p>
+      <span class="tag">Web</span> <span class="tag">JWT</span> <span class="tag">OWASP</span>
+    </div>
 
-              
-            </div>
-          </section>
+    <div class="project-card">
+      <h3>AD Permission Auditor</h3>
+      <p>Script em PowerShell que varre shares SMB, coleta ACLs e gera CSV + relatório de riscos de acesso.</p>
+      <span class="tag">PowerShell</span> <span class="tag">SMB</span> <span class="tag">IAM</span>
+    </div>
 
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Vamos conectar! Você pode me encontrar nas seguintes plataformas ou enviar um email:</p>
-            <div class="contact-links">
-                <a href="mailto:pgwerneck5@outlook.com" class="btn">Email</a>
-                <a href="https://linkedin.com/in/pgw-script" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/5kr1pt" target="_blank" class="btn">GitHub</a>
-                <a href="https://tryhackme.com/p/krpt" target="_blank" class="btn">TryHackMe</a>
-                <a href="cv.pdf" target="_blank" class="btn">Curriculo</a>
-            </div>
-        </section>
-    </main>
+    <div class="project-card">
+      <h3><a href="https://github.com/ScriptHit/pe_analyzer" target="_blank" rel="noopener">PE Analyzer</a></h3>
+      <p>Análise estática de executáveis PE. Headers, seções, imports e alertas de anomalias.</p>
+      <span class="tag">Windows</span> <span class="tag">Static</span> <span class="tag">PE</span>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 5kr1pt. Todos os direitos reservados. - pgwerneck5@outlook.com</p>
-    </footer>
+    <div class="project-card">
+      <h3><a href="https://github.com/5kr1pt/Honey5kr1pt" target="_blank" rel="noopener">Honey5kr1pt</a></h3>
+      <p>Honeypot para SMB. Isca com SACL e correlação 4663 ↔ 4624 exibindo usuário e IP.</p>
+      <span class="tag">Defesa</span> <span class="tag">SMB</span> <span class="tag">Monitoramento</span>
+    </div>
+  </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="script.js"></script>
-      <div vw class="enabled">
+  <div class="project-cta">
+    <p>Veja mais detalhes clicando nos cards ou</p>
+    <a href="https://github.com/5kr1pt" target="_blank" class="btn" rel="noopener noreferrer">Ver GitHub</a>
+  </div>
+</section>
+
+
+    <section id="experiencia" aria-labelledby="h-exp">
+      <h2 id="h-exp">Experiências</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Cibersegurança & Infraestrutura | Hospital Santa Marcelina (Matriz)</h3>
+            <span class="date">Jun/2024 | Atual</span>
+            <p>No Hospital, atuo em cibersegurança e infraestrutura em ambiente 24x7 crítico, com foco em disponibilidade, risco e experiência do usuário. Estruturo acessos no AD por mínimo privilégio, reviso ACLs de SMB e SharePoint e deixo tudo auditável. No FortiGate, mantenho políticas, VPN e webfilter, monitoro eventos e respondo a incidentes com playbooks objetivos e MTTR baixo. No Microsoft 365, aplico MFA, antiphishing e governança de caixas. Automatizo auditorias e inventário em PowerShell e apoio mudanças em VMware sem impacto para o negócio. Trabalho próximo das áreas fim, priorizando o que reduz risco operacional e simplifica a vida de quem usa o serviço. Espírito de dono, comunicação simples e conformidade com LGPD e boas práticas guiam meu dia a dia, alinhado a ambientes regulados e orientados ao paciente/cliente.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Analista de Sistemas Jr. | Hospital Santa Marcelina (Matriz)</h3>
+            <span class="date">Jul/2023 | Jun/2024</span>
+            <p>Fiquei responsável pela saúde dos sistemas e dos bancos de dados. Administrei Oracle e SQL no dia a dia, monitorei performance, ajustei consultas, criei índices e cuidei de rotinas de backup e restore para garantir disponibilidade e integridade do dado. Mantive sistemas funcionando com atenção a integrações (aplicações web/REST), normalizei tabelas quando necessário e criei views e procedures para facilitar consumo por outras áreas. Construí e mantive painéis e relatórios a partir de SQL para dar visibilidade de filas, volumes e SLA. Automatizei cargas e jobs em janelas de menor impacto e tratei incidentes e mudanças registrando causa e evidências. Foco em continuidade do serviço, qualidade do dado e conformidade com a LGPD.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Helpdesk | Hospital Santa Marcelina (Matriz)</h3>
+            <span class="date">Jul/2022 | Jul/2023</span>
+            <p>No 1º nível, atendia mais de 90 chamados por dia, por ligação e e-mail, garantindo que as pessoas conseguissem trabalhar, realizava o provisionamento de contas no AD e Microsoft 365 com MFA, padronização de imagens, atualização de estações e correção de problemas de acesso, e-mail e rede. Organizei filas por impacto, cumpri SLA, escalei quando necessário e registrei lições aprendidas que são usadas até hoje como documentação pela equipe de suporte. Treinei usuários em boas práticas de senha e phishing e mantive comunicação simples e direta. Essa base me deu disciplina de operação, cuidado com dados e foco em resolver rápido sem abrir mão de segurança.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="certificacoes" aria-labelledby="h-cert">
+  <h2 id="h-cert">Certificações</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content certification">
+        <h3>Microsoft SC-900</h3>
+        <span class="date">Fev/2025</span>
+        <p>Fundamentos de Segurança, Conformidade e Identidade na nuvem Microsoft. Cobriu Zero Trust, MFA, gestão de identidades no Entra ID, princípios de proteção com Defender, monitoramento no Sentinel e recursos de conformidade. Base sólida para aplicar mínimo privilégio, segmentar acessos e criar alertas úteis sem complicar a operação.</p>
+        <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content certification">
+        <h3>Pentest do Zero ao Profissional v2023</h3>
+        <span class="date">Mai/2023</span>
+        <p>Formação prática da Solyd focada em simulações controladas de intrusão. Montei laboratório, fiz reconhecimento, varredura e análise de serviços, exploração apenas em ambientes de teste e pós-exploração com relatório reproduzível. Ferramentas usadas: Nmap, Burp Suite, Metasploit, Python e PowerShell. Objetivo direto: entender técnicas de ataque para fortalecer detecção, hardening e resposta.</p>
+        <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+      </div>
+    </div>
+  </div>
+
+<!-- Badges -->
+<div class="badges" role="region" aria-labelledby="badges-title">
+  <h3 id="badges-title" class="badges-title">Badges</h3>
+
+  <!-- Conquistadas -->
+  <div class="badges-group" aria-labelledby="badges-earned-title">
+    <h4 id="badges-earned-title">Conquistadas</h4>
+    <ul class="badges-grid">
+      <li class="badge-card earned">
+        <a class="badge-link" href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial Microsoft SC-900">
+          <img src="https://learn.microsoft.com/pt-br/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="Badge Microsoft SC-900" loading="lazy" width="96" height="96">
+          <span class="badge-title">Microsoft SC-900</span>
+          <span class="badge-status">Conquistada</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Em progresso -->
+  <div class="badges-group" aria-labelledby="badges-progress-title">
+    <h4 id="badges-progress-title">Em progresso</h4>
+    <ul class="badges-grid">
+      <li class="badge-card in-progress" aria-label="eJPT em progresso">
+        <div class="badge-link" aria-disabled="true">
+          <img src="https://us-east-1.graphassets.com/AwCYQkwjSUCbfkm08Ct1Mz/cmcc3wze0lx3007irps13e6k3" alt="Badge eJPT" loading="lazy" width="96" height="96">
+          <span class="badge-title">eJPT</span>
+          <span class="badge-status">Em progresso</span>
+        </div>
+      </li>
+
+      <li class="badge-card in-progress" aria-label="CRTA em progresso">
+        <div class="badge-link" aria-disabled="true">
+          <img src="https://cyberwarfare.live/wp-content/uploads/2023/05/CRTA.png" alt="Badge CRTA" loading="lazy" width="96" height="96">
+          <span class="badge-title">CRTA</span>
+          <span class="badge-status">Em progresso</span>
+        </div>
+      </li>
+
+      <li class="badge-card in-progress" aria-label="CTPS em progresso">
+        <div class="badge-link" aria-disabled="true">
+          <img src="https://images.credly.com/images/e63aa507-b974-4e67-bae6-1e425f6e2a99/image.png" alt="Badge CTPS" loading="lazy" width="96" height="96">
+          <span class="badge-title">CTPS</span>
+          <span class="badge-status">Em progresso</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</section>
+    <section id="contato" aria-labelledby="h-contato">
+      <h2 id="h-contato">Contato</h2>
+      <p>Conecte-se comigo:</p>
+      <div class="contact-links">
+        <a href="mailto:pgwerneck5@outlook.com" class="btn">Email</a>
+        <a href="https://linkedin.com/in/pgw-script" target="_blank" class="btn" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/5kr1pt" target="_blank" class="btn" rel="noopener noreferrer">GitHub</a>
+        <a href="https://tryhackme.com/p/krpt" target="_blank" class="btn" rel="noopener noreferrer">TryHackMe</a>
+        <a href="cv.pdf" target="_blank" class="btn" rel="noopener noreferrer">Currículo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> 5kr1pt · pgwerneck5@outlook.com</p>
+  </footer>
+
+  <!-- VLibras -->
+  <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <!-- App -->
+  <script type="module" src="script.js"></script>
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
