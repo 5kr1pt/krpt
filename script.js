@@ -1,289 +1,254 @@
 import * as THREE from 'three';
 
-// --- Efeito Matrix Background ---
-const matrixContainer = document.getElementById('matrix-bg');
-if (matrixContainer) {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true }); // alpha: true para fundo transparente
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    matrixContainer.appendChild(renderer.domElement);
+// Utilitários
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-    const FONT_SIZE = 10; // Tamanho da fonte para os caracteres
-    const MATRIX_WIDTH = Math.floor(window.innerWidth / FONT_SIZE);
-    const MATRIX_HEIGHT = Math.floor(window.innerHeight / FONT_SIZE);
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ';
-    const charCount = characters.length;
+// ============================
+// Matrix Background (Three.js)
+// ============================
+(() => {
+  const container = $('#matrix-bg');
+  if (!container) return;
 
-    // Usaremos um CanvasTexture para desenhar os caracteres
-    const canvas = document.createElement('canvas');
-    canvas.width = MATRIX_WIDTH * FONT_SIZE;
-    canvas.height = MATRIX_HEIGHT * FONT_SIZE;
-    const ctx = canvas.getContext('2d');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  container.appendChild(renderer.domElement);
 
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter; // Melhora a qualidade da textura
-    const planeGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
-    const planeMaterial = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+  let canvas, ctx, texture, plane;
+  let fontSize = 12;
+  let cols = 0, rows = 0;
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ';
+  const colState = [];
+
+  function setupCanvas(w, h) {
+    fontSize = Math.max(10, Math.round(w / 160)); // escala leve
+    cols = Math.floor(w / fontSize);
+    rows = Math.floor(h / fontSize);
+
+    canvas = document.createElement('canvas');
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+
+    const geo = new THREE.PlaneGeometry(w, h);
+    const mat = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+    plane = new THREE.Mesh(geo, mat);
     scene.add(plane);
 
-    camera.position.z = 1; // A câmera está olhando diretamente para o plano
+    camera.position.z = 1;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
 
-    const columns = [];
-    for (let i = 0; i < MATRIX_WIDTH; i++) {
-        columns[i] = {
-            y: Math.random() * MATRIX_HEIGHT, // Posição inicial aleatória
-            speed: 1 + Math.random() * 3,   // Velocidade aleatória
-            switchInterval: Math.round(2 + Math.random() * 10) // Intervalo para trocar caractere
-        };
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(w, h, false);
+
+    colState.length = 0;
+    for (let i = 0; i < cols; i++) {
+      colState[i] = { y: Math.random() * rows, speed: 0.6 + Math.random() * 2.2 };
+    }
+  }
+
+  function draw(w, h) {
+    ctx.fillStyle = 'rgba(10,15,20,0.1)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#00ff9c';
+    ctx.font = `${fontSize}px monospace`;
+
+    for (let i = 0; i < cols; i++) {
+      const s = colState[i];
+      const ch = chars.charAt((Math.random() * chars.length) | 0);
+      const x = i * fontSize;
+      const y = s.y * fontSize;
+      ctx.fillText(ch, x, y);
+      s.y += s.speed / 20;
+      if (y > h && Math.random() > 0.975) s.y = 0;
     }
 
-    function drawMatrix() {
-        // Fundo semi-transparente para criar o efeito de rastro
-        ctx.fillStyle = 'rgba(10, 15, 20, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    texture.needsUpdate = true;
+  }
 
-        ctx.fillStyle = '#00ff9c'; // Cor primária (verde menta vibrante)
-        ctx.font = `${FONT_SIZE}px monospace`;
+  function resize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
 
-        columns.forEach((column, index) => {
-            const charIndex = Math.floor(Math.random() * charCount);
-            const text = characters.charAt(charIndex);
-            const x = index * FONT_SIZE;
-            const y = column.y * FONT_SIZE;
-
-            ctx.fillText(text, x, y);
-
-            // Move a coluna para baixo
-            column.y += column.speed / 20;
-
-            // Se a coluna sair da tela, reseta para o topo com nova posição Y aleatória
-            if (column.y * FONT_SIZE > canvas.height && Math.random() > 0.975) {
-                 column.y = 0;
-            }
-
-            if (column.y < 0) column.y = Math.random() * MATRIX_HEIGHT;
-        });
-
-        texture.needsUpdate = true;
+    // limpar anterior
+    if (plane) {
+      plane.geometry.dispose();
+      plane.material.map.dispose();
+      plane.material.dispose();
+      scene.remove(plane);
     }
 
-    function animate() {
-        requestAnimationFrame(animate);
-        drawMatrix();
-        renderer.render(scene, camera);
+    setupCanvas(w, h);
+  }
+
+  let raf;
+  function loop() {
+    draw(window.innerWidth, window.innerHeight);
+    renderer.render(scene, camera);
+    raf = requestAnimationFrame(loop);
+  }
+
+  // Respeita reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function start() {
+    resize();
+    if (!prefersReduced) loop();
+  }
+
+  // Pause quando aba oculta
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelAnimationFrame(raf);
+    else if (!prefersReduced) loop();
+  });
+
+  window.addEventListener('resize', resize, { passive: true });
+  start();
+})();
+
+// =====================
+// Typing effect simples
+// =====================
+(() => {
+  const el = $('#typing-effect');
+  if (!el) return;
+  const text = 'Analista de Cibersegurança Ofensiva | Pentester | Bug Hunter';
+  let i = 0, del = false, curr = '';
+  const speed = 100, delSpeed = 50, wait = 1500;
+
+  function tick() {
+    const full = text;
+    curr = del ? full.slice(0, curr.length - 1) : full.slice(0, curr.length + 1);
+    el.textContent = curr;
+    let t = del ? delSpeed : speed;
+    if (!del && curr === full) { t = wait; del = true; }
+    else if (del && curr === '') { del = false; t = 500; }
+    setTimeout(tick, t);
+  }
+  setTimeout(tick, 400);
+})();
+
+// ==============================
+// Hero scroll effects otimizado
+// ==============================
+(() => {
+  const hero = $('#hero-section');
+  const content = $('.hero-content');
+  if (!hero || !content) return;
+
+  const effectDistance = Math.floor(window.innerHeight * 0.6) || 1;
+  const root = document.documentElement;
+
+  function onScroll() {
+    const y = window.scrollY;
+    const r = Math.min(y / effectDistance, 1);
+    const opacity = 1 - r;
+    const scale = 1 - r * 0.1;
+    const blur = r * 8;
+    const paddingFactor = 1 - Math.min(r * 1.2, 1);
+
+    content.style.opacity = opacity;
+    content.style.transform = `scale(${scale})`;
+    content.style.filter = `blur(${blur}px)`;
+    content.style.paddingTop = `${4 * paddingFactor}rem`;
+    content.style.paddingBottom = `${3 * paddingFactor}rem`;
+    content.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
+
+    const alpha = parseFloat(getComputedStyle(root).getPropertyValue('--cover-overlay-alpha')) || 0.8;
+    hero.style.backgroundColor = `rgba(10,15,20, ${alpha * (1 - r)})`;
+  }
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// ===============================
+// Scroll reveal com Intersection
+// ===============================
+(() => {
+  const sections = $$('main section');
+  if (!sections.length || !('IntersectionObserver' in window)) return;
+
+  const obs = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
     }
+  }, { threshold: 0.1 });
 
-    // Responsividade
-    window.addEventListener('resize', () => {
-        const newWidth = window.innerWidth;
-        const newHeight = window.innerHeight;
+  sections.forEach(s => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(20px)';
+    s.style.transition = 'opacity .6s ease-out, transform .6s ease-out';
+    obs.observe(s);
+  });
+})();
 
-        canvas.width = newWidth;
-        canvas.height = newHeight;
+// ========================================
+// Menu: botão sempre visível e funcional
+// ========================================
+(() => {
+  const nav  = document.querySelector('.site-nav');
+  const btn  = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
+  const list = document.getElementById('nav-list') || document.querySelector('.nav-list');
+  if (!nav || !btn || !list) return;
 
-        renderer.setSize(newWidth, newHeight);
-        camera.aspect = newWidth / newHeight;
-        camera.updateProjectionMatrix();
+  function openNav() {
+    nav.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+  function closeNav() {
+    nav.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+  function toggleNav() {
+    if (nav.classList.contains('hidden')) openNav();
+    else closeNav();
+  }
 
-        plane.geometry.dispose();
-        plane.geometry = new THREE.PlaneGeometry(newWidth, newHeight);
-    });
+  // Garante que cliques no botão sempre disparem o toggle
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleNav();
+  });
 
-    animate();
-
-} else {
-    console.error("Elemento #matrix-bg não encontrado.");
-}
-
-// --- Efeito de Digitação ---
-const typingElement = document.getElementById('typing-effect');
-if (typingElement) {
-    const textToType = "Analista de Segurança Ofensiva | Pentester | Bug Hunter";
-    let index = 0;
-    let isDeleting = false;
-    let currentText = '';
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const delayBetween = 1500;
-
-    function type() {
-        const fullText = textToType;
-
-        if (isDeleting) {
-            currentText = fullText.substring(0, currentText.length - 1);
-        } else {
-            currentText = fullText.substring(0, currentText.length + 1);
-        }
-
-        if (typingElement) {
-            typingElement.textContent = currentText;
-        } else {
-            return;
-        }
-
-        let typeSpeed = isDeleting ? deletingSpeed : typingSpeed;
-
-        if (!isDeleting && currentText === fullText) {
-            typeSpeed = delayBetween;
-            isDeleting = true;
-        } else if (isDeleting && currentText === '') {
-            isDeleting = false;
-            typeSpeed = 500;
-        }
-
-        setTimeout(type, typeSpeed);
+  // Delegação como fallback, caso o botão seja re-renderizado em algum fluxo
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('#menu-toggle, .menu-toggle');
+    if (target) {
+      e.stopPropagation();
+      toggleNav();
     }
+  });
 
-    setTimeout(type, 500);
-} else {
-    console.error("Elemento #typing-effect não encontrado.");
-}
+  // Fecha ao clicar em links do menu
+  list.addEventListener('click', (e) => {
+    if (e.target.closest('a')) closeNav();
+  });
 
-// --- Hero Section Scroll Effect ---
-const heroContent = document.querySelector('.hero-content');
-const heroSection = document.getElementById('hero-section');
+  // Fecha com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+  });
 
-if (heroContent && heroSection) {
-    const effectDistance = window.innerHeight * 0.6;
-    const initialPaddingTop = 4;
-    const initialPaddingBottom = 3;
-    let initialBgAlpha = 0.8;
-    try {
-        const rootStyle = getComputedStyle(document.documentElement);
-        const alphaVar = rootStyle.getPropertyValue('--cover-overlay-alpha').trim();
-        if (alphaVar) {
-            initialBgAlpha = parseFloat(alphaVar);
-        }
-    } catch (e) {
-        console.warn("Could not read --cover-overlay-alpha CSS variable.", e);
-    }
+  // Estado inicial: fechado
+  closeNav();
+})();
 
-    function handleScroll() {
-        const scrollY = window.scrollY;
-        const scrollRatio = effectDistance > 0 ? Math.min(scrollY / effectDistance, 1) : 0;
-    
-        const contentOpacity = 1 - scrollRatio;
-        const scale = 1 - scrollRatio * 0.1;
-        const blur = scrollRatio * 8;
-        const backgroundAlpha = initialBgAlpha * (1 - scrollRatio);
-        const paddingTop = initialPaddingTop * (1 - Math.min(scrollRatio * 1.2, 1));
-        const paddingBottom = initialPaddingBottom * (1 - Math.min(scrollRatio * 1.2, 1));
-    
-        heroContent.style.opacity = contentOpacity;
-        heroContent.style.transform = `scale(${scale})`;
-        heroContent.style.filter = `blur(${blur}px)`;
-        heroContent.style.paddingTop = `${paddingTop}rem`;
-        heroContent.style.paddingBottom = `${paddingBottom}rem`;
-        heroContent.style.pointerEvents = contentOpacity < 0.1 ? 'none' : 'auto';
-    
-        heroSection.style.backgroundColor = `rgba(10, 15, 20, ${backgroundAlpha})`;
-        heroSection.style.pointerEvents = backgroundAlpha < 0.05 ? 'none' : 'auto';
-    
-        // Se o scroll estiver praticamente completo, espera um pouco antes de setar o display none
-        if (scrollRatio >= 0.98) {
-            setTimeout(() => {
-                // Confirma que o usuário não rolou para cima durante o delay
-                if (window.scrollY / effectDistance >= 0.98) {
-                    heroContent.style.display = 'none';
-                }
-            }, 200);
-        } else {
-            heroContent.style.display = 'block';
-        }
-    }
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-} else {
-    if (!heroContent) console.error("Elemento .hero-content não encontrado.");
-    if (!heroSection) console.error("Elemento #hero-section não encontrado.");
-}
-
-// --- Animação de Scroll Reveal para Sections ---
-const sections = document.querySelectorAll('section');
-
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    scrollObserver.observe(section);
-});
-
-// --- Lógica para Remover e Reaparecer o Menu via Botão ---
-
-// Seleciona os elementos de navegação e do botão de toggle
-const nav = document.querySelector('nav');
-const menuToggle = document.getElementById('menu-toggle');
-
-// Flag para indicar que o usuário forçou a exibição do menu
-let menuForceOpen = false;
-
-// Função para esconder o menu (removendo-o do fluxo)
-function hideNav() {
-    nav.style.display = 'none';
-    // Mantém o botão sempre visível quando o usuário está com scroll > 50
-    menuToggle.style.display = 'block';
-}
-
-// Função para mostrar o menu
-function showNav() {
-    // Restaura o menu utilizando "flex" (ou outro valor que corresponda ao seu layout)
-    nav.style.display = 'flex';
-    // Se a página estiver com scroll > 50, o botão permanece visível para permitir fechar o menu
-    // Se estiver no topo, podemos ocultar o botão (opcional)
-    if (window.scrollY > 50) {
-        menuToggle.style.display = 'block';
-    } else {
-        menuToggle.style.display = 'none';
-    }
-}
-
-// Estado inicial: Se estiver no topo, mostra o menu e oculta o botão; senão, oculta o menu e mostra o botão.
-if (window.scrollY <= 50) {
-    showNav();
-} else {
-    hideNav();
-}
-
-// Evento de scroll – somente oculta o menu se o usuário NÃO tiver forçado sua exibição
-window.addEventListener('scroll', () => {
-    if (window.scrollY <= 50) {
-        showNav();
-        menuForceOpen = false;
-    } else {
-        if (!menuForceOpen) {
-            hideNav();
-        }
-    }
-});
-
-// Evento de clique no botão de toggle: alterna a exibição do menu e ativa/desativa a flag
-menuToggle.addEventListener('click', () => {
-    const navDisplay = getComputedStyle(nav).display;
-    if (navDisplay === 'none') {
-        showNav();
-        menuForceOpen = true;
-    } else {
-        hideNav();
-        menuForceOpen = false;
-    }
-});
+// Ano no footer
+(() => {
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+})();
