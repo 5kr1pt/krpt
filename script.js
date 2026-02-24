@@ -24,7 +24,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   const colState = [];
 
   function setupCanvas(w, h) {
-    fontSize = Math.max(10, Math.round(w / 160)); // escala leve
+    fontSize = Math.max(10, Math.round(w / 160));
     cols = Math.floor(w / fontSize);
     rows = Math.floor(h / fontSize);
 
@@ -78,7 +78,6 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    // limpar anterior
     if (plane) {
       plane.geometry.dispose();
       plane.material.map.dispose();
@@ -96,7 +95,6 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
     raf = requestAnimationFrame(loop);
   }
 
-  // Respeita reduced motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function start() {
@@ -104,7 +102,6 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
     if (!prefersReduced) loop();
   }
 
-  // Pause quando aba oculta
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
     else if (!prefersReduced) loop();
@@ -115,21 +112,20 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 })();
 
 // =====================
-// Typing effect simples
+// Typing effect
 // =====================
 (() => {
   const el = $('#typing-effect');
   if (!el) return;
   const text = 'Analista de Cibersegurança Ofensiva | Pentester | Bug Hunter';
-  let i = 0, del = false, curr = '';
+  let del = false, curr = '';
   const speed = 100, delSpeed = 50, wait = 1500;
 
   function tick() {
-    const full = text;
-    curr = del ? full.slice(0, curr.length - 1) : full.slice(0, curr.length + 1);
+    curr = del ? text.slice(0, curr.length - 1) : text.slice(0, curr.length + 1);
     el.textContent = curr;
     let t = del ? delSpeed : speed;
-    if (!del && curr === full) { t = wait; del = true; }
+    if (!del && curr === text) { t = wait; del = true; }
     else if (del && curr === '') { del = false; t = 500; }
     setTimeout(tick, t);
   }
@@ -137,33 +133,28 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 })();
 
 // ==============================
-// Hero scroll effects otimizado
+// Hero scroll effect
 // ==============================
 (() => {
   const hero = $('#hero-section');
   const content = $('.hero-content');
   if (!hero || !content) return;
 
-  const effectDistance = Math.floor(window.innerHeight * 0.6) || 1;
-  const root = document.documentElement;
+  const navHeight = document.querySelector('.site-header')?.offsetHeight || 60;
 
   function onScroll() {
-    const y = window.scrollY;
-    const r = Math.min(y / effectDistance, 1);
-    const opacity = 1 - r;
-    const scale = 1 - r * 0.1;
-    const blur = r * 8;
-    const paddingFactor = 1 - Math.min(r * 1.2, 1);
+    const rect = hero.getBoundingClientRect();
+    const heroHeight = hero.offsetHeight;
+    const effectDistance = heroHeight * 0.6 || 1;
+    // scrolled: 0 at page top, increases as hero scrolls off-screen
+    const scrolled = Math.max(0, navHeight - rect.top);
+    const r = Math.min(scrolled / effectDistance, 1);
 
-    content.style.opacity = opacity;
-    content.style.transform = `scale(${scale})`;
-    content.style.filter = `blur(${blur}px)`;
-    content.style.paddingTop = `${4 * paddingFactor}rem`;
-    content.style.paddingBottom = `${3 * paddingFactor}rem`;
-    content.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
-
-    const alpha = parseFloat(getComputedStyle(root).getPropertyValue('--cover-overlay-alpha')) || 0.8;
-    hero.style.backgroundColor = `rgba(10,15,20, ${alpha * (1 - r)})`;
+    content.style.opacity = 1 - r;
+    content.style.transform = `scale(${1 - r * 0.1})`;
+    content.style.filter = `blur(${r * 8}px)`;
+    content.style.pointerEvents = r > 0.9 ? 'none' : 'auto';
+    hero.style.backgroundColor = `rgba(10,15,20,${(1 - r) * 0.8})`;
   }
 
   onScroll();
@@ -171,7 +162,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 })();
 
 // ===============================
-// Scroll reveal com Intersection
+// Scroll reveal (IntersectionObserver)
 // ===============================
 (() => {
   const sections = $$('main section');
@@ -182,6 +173,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
       }
     }
   }, { threshold: 0.1 });
@@ -195,60 +187,113 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 })();
 
 // ========================================
-// Menu: botão sempre visível e funcional
+// Mobile menu toggle
 // ========================================
 (() => {
-  const nav  = document.querySelector('.site-nav');
-  const btn  = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
-  const list = document.getElementById('nav-list') || document.querySelector('.nav-list');
+  const nav = document.querySelector('.site-nav');
+  const btn = document.getElementById('menu-toggle');
+  const list = document.getElementById('nav-list');
   if (!nav || !btn || !list) return;
 
-  function openNav() {
-    nav.classList.remove('hidden');
+  const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+  function openMenu() {
+    nav.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Fechar menu');
     document.body.classList.add('menu-open');
   }
-  function closeNav() {
-    nav.classList.add('hidden');
+
+  function closeMenu() {
+    nav.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Abrir menu');
     document.body.classList.remove('menu-open');
   }
-  function toggleNav() {
-    if (nav.classList.contains('hidden')) openNav();
-    else closeNav();
+
+  function toggleMenu() {
+    if (isDesktop()) return;
+    nav.classList.contains('is-open') ? closeMenu() : openMenu();
   }
 
-  // Garante que cliques no botão sempre disparem o toggle
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleNav();
-  });
+  btn.addEventListener('click', toggleMenu);
 
-  // Delegação como fallback, caso o botão seja re-renderizado em algum fluxo
-  document.addEventListener('click', (e) => {
-    const target = e.target.closest('#menu-toggle, .menu-toggle');
-    if (target) {
-      e.stopPropagation();
-      toggleNav();
-    }
-  });
-
-  // Fecha ao clicar em links do menu
+  // Close when a nav link is clicked
   list.addEventListener('click', (e) => {
-    if (e.target.closest('a')) closeNav();
+    if (e.target.closest('a')) closeMenu();
   });
 
-  // Fecha com ESC
+  // Close with Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeNav();
+    if (e.key === 'Escape') closeMenu();
   });
 
-  // Estado inicial: fechado
-  closeNav();
+  // Close when viewport widens to desktop
+  window.addEventListener('resize', () => {
+    if (isDesktop()) closeMenu();
+  }, { passive: true });
 })();
 
 // Ano no footer
 (() => {
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
+})();
+
+// ============================
+// Console Easter Egg
+// ============================
+(() => {
+  const g  = 'color:#00ff9c;font-family:monospace;';
+  const b  = 'color:#00ff9c;font-family:monospace;font-weight:bold;font-size:13px;';
+  const y  = 'color:#ffd700;font-family:monospace;';
+  const d  = 'color:#4a5568;font-family:monospace;font-size:11px;';
+  setTimeout(() => {
+    console.log('%c\n[*] Reconhecimento via DevTools detectado.', b);
+    console.log('%c[*] Target%c pgwerneck5@outlook.com', g, y);
+    console.log('%c[+] Curiosidade: HIGH', g);
+    console.log('%c[+] Stack: Python · PowerShell · Burp Suite · BloodHound · Impacket', g);
+    console.log('%c[+] CVE count: classified', g);
+    console.log('%c[!] Você chegou até aqui — isso já é critério de contratação.', b);
+    console.log('%c    → linkedin.com/in/pgw-script', y);
+    console.log('%c    → github.com/5kr1pt', y);
+    console.log('%c\n[hint] Tente o Konami Code: ↑↑↓↓←→←→BA', d);
+  }, 1200);
+})();
+
+// ============================
+// Konami Code Easter Egg
+// ============================
+(() => {
+  const SEQ = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let idx = 0;
+
+  document.addEventListener('keydown', e => {
+    idx = e.key === SEQ[idx] ? idx + 1 : (e.key === SEQ[0] ? 1 : 0);
+    if (idx === SEQ.length) { idx = 0; showKonamiToast(); }
+  });
+
+  function showKonamiToast() {
+    const old = document.getElementById('konami-toast');
+    if (old) old.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'konami-toast';
+    toast.innerHTML = `
+      <div class="kt-header">✓ ACCESS GRANTED</div>
+      <pre class="kt-body">root@5kr1pt:~# whoami
+→ hacker reconhecendo o portfólio 👀
+
+root@5kr1pt:~# cat flag.txt
+→ CTF-{v0c3_ach0u_0_easter_egg}
+
+root@5kr1pt:~# _</pre>`;
+
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('kt-visible'));
+    setTimeout(() => {
+      toast.classList.remove('kt-visible');
+      setTimeout(() => toast.remove(), 500);
+    }, 5500);
+  }
 })();

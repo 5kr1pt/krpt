@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Portfólio de Paulo '5kr1pt' Werneck. Cibersegurança, pentest e projetos." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Portfólio | 5kr1pt" />
+  <meta property="og:description" content="Portfólio de Paulo '5kr1pt' Werneck. Cibersegurança, pentest e projetos." />
+  <meta property="og:type" content="website" />
+
   <title>Portfólio | 5kr1pt</title>
 
   <!-- Fonts -->
@@ -30,23 +37,38 @@
 
   <header class="site-header">
     <nav class="site-nav" aria-label="Navegação principal">
-      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menu">☰</button>
-      <ul id="nav-list" class="nav-list" role="menu">
-        <li role="none"><a role="menuitem" href="#sobre">Sobre</a></li>
-        <li role="none"><a role="menuitem" href="#habilidades">Habilidades</a></li>
-        <li role="none"><a role="menuitem" href="#projetos">Projetos</a></li>
-        <li role="none"><a role="menuitem" href="#contato">Contato</a></li>
+      <a href="#hero-section" class="nav-brand">5kr1pt</a>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      <ul id="nav-list" class="nav-list" role="list">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#certificacoes">Certificações</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
-
-    <div class="hero" id="hero-section">
-      <div class="hero-content">
-        <h1>Paulo <i>“5kr1pt”</i> Werneck</h1>
-        <p class="subtitle">Analista de Cibersegurança (Red Team)</p>
-        <div id="typing-effect" aria-live="polite"></div>
-      </div>
-    </div>
   </header>
+
+  <div class="hero" id="hero-section">
+    <div class="hero-content">
+      <p class="hero-label">// offensive security</p>
+      <h1>Paulo <em>"5kr1pt"</em> Werneck</h1>
+      <p class="subtitle">Analista de Cibersegurança (Red Team)</p>
+      <div id="typing-effect" aria-live="polite"></div>
+      <div class="hero-actions">
+        <a href="#projetos" class="btn">Ver Projetos</a>
+        <a href="cv.pdf" target="_blank" class="btn btn-ghost" rel="noopener noreferrer">Download CV</a>
+      </div>
+      <a href="#sobre" class="scroll-indicator" aria-label="Ir para o conteúdo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
+    </div>
+  </div>
 
   <main>
     <section id="sobre" aria-labelledby="h-sobre">
@@ -57,112 +79,165 @@
       </h2>
 
       <div class="about-container">
-        <div class="profile-picture-container" aria-hidden="true">
-          <div class="profile-picture-placeholder" title="Foto de perfil"></div>
-        </div>
-          <div class="about-text">
-            <p><span class="hello-world">Hello World!</span></p>
-            <p>
-              Minha jornada na cibersegurança começou aos <strong>12 anos</strong>, movido pela curiosidade de entender como o que parecia impenetrável funcionava por baixo do capô. O que começou como um hobby transformou-se em uma busca constante por aprimoramento técnico e mentalidade ofensiva.
-            </p>
-            <p>
-              Construí minha base na "trincheira" da tecnologia, passando pelo suporte, análise de sistemas e infraestrutura em ambientes hospitalares críticos. Essa vivência me ensinou que, para defender com eficiência, é preciso ter dominado a arte de construir e saber exatamente onde a estrutura racha. Consolidei essa expertise prática com o Bacharelado em Ciência da Computação e a especialização em Offensive Cyber Security pela FIAP, unindo o rigor acadêmico à visão de quem "quebra" sistemas no mundo real.
-            </p>
-            <p>
-              Hoje, atuo como <strong>Offensive Cybersecurity Engineer na MV, a maior Healthtech da América Latina</strong>. Minha missão é antecipar o próximo passo do adversário, utilizando meu histórico em infraestrutura para blindar ecossistemas digitais que impactam diretamente a saúde e a vida de milhões de pessoas.
-            </p>
+        <div class="profile-picture-wrapper">
+          <div class="profile-picture-container">
+            <img src="foto.jpg" alt="Paulo Werneck" class="profile-picture-img" loading="lazy" width="180" height="180">
           </div>
+        </div>
+        <div class="about-text">
+          <p><span class="hello-world">Hello World!</span></p>
+          <p>
+            Minha jornada na cibersegurança começou aos <strong>12 anos</strong>, movido pela curiosidade de entender como o que parecia impenetrável funcionava por baixo do capô. O que começou como um hobby transformou-se em uma busca constante por aprimoramento técnico e mentalidade ofensiva.
+          </p>
+          <p>
+            Construí minha base na "trincheira" da tecnologia, passando pelo suporte, análise de sistemas e infraestrutura em ambientes hospitalares críticos. Essa vivência me ensinou que, para defender com eficiência, é preciso ter dominado a arte de construir e saber exatamente onde a estrutura racha. Consolidei essa expertise prática com o Bacharelado em Ciência da Computação e a especialização em Offensive Cyber Security pela FIAP, unindo o rigor acadêmico à visão de quem "quebra" sistemas no mundo real.
+          </p>
+          <p>
+            Hoje, atuo como <strong>Offensive Cybersecurity Engineer na MV, a maior Healthtech da América Latina</strong>. Minha missão é antecipar o próximo passo do adversário, utilizando meu histórico em infraestrutura para blindar ecossistemas digitais que impactam diretamente a saúde e a vida de milhões de pessoas.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="habilidades" aria-labelledby="h-hab">
       <h2 id="h-hab">Habilidades Técnicas</h2>
       <div class="skills-grid">
         <div class="skill-card">
-          <h3>Pentesting</h3>
-          <p>Testes de intrusão, analises de vulnerabilidades e GVUL para prevenir ataques.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <h3>Web App Pentest</h3>
+          </div>
+          <p>Testes focados em OWASP Top 10: XSS, SQLi, IDOR, SSRF, LFI/RFI e SSTI, utilizando Burp Suite em ambientes reais e labs.</p>
         </div>
         <div class="skill-card">
-          <h3>Malware</h3>
-          <p>Análise em sandbox e engenharia reversa básica para detectar e conter ameaças.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <h3>Active Directory</h3>
+          </div>
+          <p>BloodHound, Kerberoasting, Pass-the-Hash, abuso de ACLs e Impacket em ambientes corporativos Windows.</p>
         </div>
         <div class="skill-card">
-          <h3>Redes</h3>
-          <p>Monitoramento com Wireshark e configuração segura de firewalls e VLANs.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <h3>Red Teaming</h3>
+          </div>
+          <p>Simulação de adversários com C2, OPSEC, mapeamento por MITRE ATT&amp;CK e exercícios de Purple Team.</p>
         </div>
         <div class="skill-card">
-          <h3>IAM</h3>
-          <p>Gerenciamento de acessos no Azure AD e implementação de MFA.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <h3>Network Pentest</h3>
+          </div>
+          <p>Reconhecimento com Nmap, exploração com Metasploit, pivoting e movimentação lateral em redes corporativas.</p>
         </div>
         <div class="skill-card">
-          <h3>Compliance</h3>
-          <p>Aplicação prática de LGPD e GDPR em políticas e processos internos.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9V6a3 3 0 0 1 6 0v3"/><rect x="8" y="9" width="8" height="9" rx="3"/><line x1="3" y1="13" x2="8" y2="13"/><line x1="16" y1="13" x2="21" y2="13"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+            <h3>Malware Analysis</h3>
+          </div>
+          <p>Análise estática e dinâmica, execução em sandbox, engenharia reversa básica e extração de IOCs.</p>
         </div>
         <div class="skill-card">
-          <h3>SIEM</h3>
-          <p>Monitoramento e correlação de eventos com Microsoft Sentinel e Splunk.</p>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/><polyline points="12 13 15 16 18 13"/><line x1="15" y1="10" x2="15" y2="16"/></svg>
+            <h3>Cloud Offensive</h3>
+          </div>
+          <p>Ataques em Azure AD e M365, bypass de Conditional Access e manipulação de tokens OAuth.</p>
         </div>
         <div class="skill-card">
-          <h3>Análise Forense</h3>
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <h3>Scripting &amp; Tooling</h3>
+          </div>
+          <p>Desenvolvimento de ferramentas e automações em Python, PowerShell e Bash, incluindo técnicas Living off the Land.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <h3>OSINT &amp; Recon</h3>
+          </div>
+          <p>Mapeamento de superfície de ataque, footprinting e reconhecimento passivo e ativo com Shodan e outras fontes abertas.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+            <h3>Análise Forense</h3>
+          </div>
           <p>Coleta e preservação de evidências digitais com FTK Imager e Autopsy.</p>
-        </div>
-        <div class="skill-card">
-          <h3>Cloud Security</h3>
-          <p>Proteção de workloads no Azure com base na certificação SC-900.</p>
-        </div>
-        <div class="skill-card">
-          <h3>VMware e Virtualização</h3>
-          <p>Administração de ESXi e vCenter, provisionamento de VMs e migração de storage.</p>
         </div>
       </div>
     </section>
 
-<section id="projetos" aria-labelledby="h-proj">
-  <h2 id="h-proj">Projetos Destacados</h2>
+    <section id="projetos" aria-labelledby="h-proj">
+      <h2 id="h-proj">Projetos Destacados</h2>
 
-  <div class="project-grid">
-    <!-- cards... -->
-    <div class="project-card">
-      <h3><a href="https://github.com/5kr1pt/jwt-wizard" target="_blank" rel="noopener">JWT Wizard</a></h3>
-      <p>CLI em Python para decodificar, editar e reassinar JWTs. Foco em labs e CTFs.</p>
-      <span class="tag">Python</span> <span class="tag">JWT</span> <span class="tag">CLI</span>
-    </div>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3><a href="https://github.com/5kr1pt/jwt-wizard" target="_blank" rel="noopener">JWT Wizard</a></h3>
+          <p>CLI em Python para decodificar, editar e reassinar JWTs. Foco em labs e CTFs.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JWT</span>
+            <span class="tag">CLI</span>
+          </div>
+        </div>
 
-    <div class="project-card">
-      <h3>Azure Sentinel Mini-Pack</h3>
-      <p>Conjunto de 10 regras KQL + 4 playbooks de resposta para detecção rápida no Microsoft Sentinel.</p>
-      <span class="tag">Azure</span> <span class="tag">KQL</span> <span class="tag">SIEM</span>
-    </div>
+        <div class="project-card">
+          <h3>Azure Sentinel Mini-Pack</h3>
+          <p>Conjunto de 10 regras KQL + 4 playbooks de resposta para detecção rápida no Microsoft Sentinel.</p>
+          <div class="tags">
+            <span class="tag">Azure</span>
+            <span class="tag">KQL</span>
+            <span class="tag">SIEM</span>
+          </div>
+        </div>
 
-    <div class="project-card">
-      <h3><a href="https://github.com/5kr1pt/jwt-playground" target="_blank" rel="noopener">JWT Playground</a></h3>
-      <p>Web app para criar, inspecionar e manipular tokens no navegador. Uso educacional.</p>
-      <span class="tag">Web</span> <span class="tag">JWT</span> <span class="tag">OWASP</span>
-    </div>
+        <div class="project-card">
+          <h3><a href="https://github.com/5kr1pt/jwt-playground" target="_blank" rel="noopener">JWT Playground</a></h3>
+          <p>Web app para criar, inspecionar e manipular tokens no navegador. Uso educacional.</p>
+          <div class="tags">
+            <span class="tag">Web</span>
+            <span class="tag">JWT</span>
+            <span class="tag">OWASP</span>
+          </div>
+        </div>
 
-    <div class="project-card">
-      <h3>AD Permission Auditor</h3>
-      <p>Script em PowerShell que varre shares SMB, coleta ACLs e gera CSV + relatório de riscos de acesso.</p>
-      <span class="tag">PowerShell</span> <span class="tag">SMB</span> <span class="tag">IAM</span>
-    </div>
+        <div class="project-card">
+          <h3>AD Permission Auditor</h3>
+          <p>Script em PowerShell que varre shares SMB, coleta ACLs e gera CSV + relatório de riscos de acesso.</p>
+          <div class="tags">
+            <span class="tag">PowerShell</span>
+            <span class="tag">SMB</span>
+            <span class="tag">IAM</span>
+          </div>
+        </div>
 
-    <div class="project-card">
-      <h3><a href="https://github.com/ScriptHit/pe_analyzer" target="_blank" rel="noopener">PE Analyzer</a></h3>
-      <p>Análise estática de executáveis PE. Headers, seções, imports e alertas de anomalias.</p>
-      <span class="tag">Windows</span> <span class="tag">Static</span> <span class="tag">PE</span>
-    </div>
+        <div class="project-card">
+          <h3><a href="https://github.com/ScriptHit/pe_analyzer" target="_blank" rel="noopener">PE Analyzer</a></h3>
+          <p>Análise estática de executáveis PE. Headers, seções, imports e alertas de anomalias.</p>
+          <div class="tags">
+            <span class="tag">Windows</span>
+            <span class="tag">Static</span>
+            <span class="tag">PE</span>
+          </div>
+        </div>
 
-    <div class="project-card">
-      <h3><a href="https://github.com/5kr1pt/Honey5kr1pt" target="_blank" rel="noopener">Honey5kr1pt</a></h3>
-      <p>Honeypot para SMB. Isca com SACL e correlação 4663 ↔ 4624 exibindo usuário e IP.</p>
-      <span class="tag">Defesa</span> <span class="tag">SMB</span> <span class="tag">Monitoramento</span>
-    </div>
-  </div>
+        <div class="project-card">
+          <h3><a href="https://github.com/5kr1pt/Honey5kr1pt" target="_blank" rel="noopener">Honey5kr1pt</a></h3>
+          <p>Honeypot para SMB. Isca com SACL e correlação 4663 ↔ 4624 exibindo usuário e IP.</p>
+          <div class="tags">
+            <span class="tag">Defesa</span>
+            <span class="tag">SMB</span>
+            <span class="tag">Monitoramento</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="project-cta">
-    <p>Veja mais detalhes clicando nos cards ou</p>
-    <a href="https://github.com/5kr1pt" target="_blank" class="btn" rel="noopener noreferrer">Ver GitHub</a>
-  </div>
-</section>
+      <div class="project-cta">
+        <p>Veja mais detalhes clicando nos cards ou</p>
+        <a href="https://github.com/5kr1pt" target="_blank" class="btn" rel="noopener noreferrer">Ver GitHub</a>
+      </div>
+    </section>
 
     <section id="experiencia" aria-labelledby="h-exp">
       <h2 id="h-exp">Experiências</h2>
@@ -171,13 +246,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="experience-header">
-              <img src="https://media.licdn.com/dms/image/v2/D4E0BAQHLSJs2N17hhw/company-logo_100_100/company-logo_100_100/0/1656709238568/mv_saude_digital_logo?e=1768435200&v=beta&t=ToXVHOWfczFAnQIJ7fs4gH8Pp4LEiD_62rst8S01eHk" alt="Logo MV" class="company-logo">
+              <img src="mv_logo.jpg" alt="Logo MV" class="company-logo" loading="lazy" width="45" height="45">
               <div>
                 <h3>Offensive Cybersecurity Engineer (Red Team) | MV</h3>
-                <span class="date">Nov/2025 | Atual</span>
+                <span class="date">Nov/2025 | <span class="date-current">Atual</span></span>
               </div>
             </div>
-            <p>Foco em operações de segurança ofensiva e simulação de adversários para fortalecer a infraestrutura da maior empresa de software de gestão de saúde da América Latina. Realizo testes de intrusão (Pentest) em ambientes complexos, análise de vulnerabilidades e desenvolvimento de estratégias de Red Teaming. Atuo na identificação de vetores de ataque e colaboro com o time de defesa para elevar a maturidade de detecção e resposta através de exercícios de Purple Teaming.</p>
+            <p>Foco em operações de segurança ofensiva e simulação de adversários na maior empresa de software de gestão de saúde da América Latina. Realizo testes de intrusão em ambientes complexos, análise de vulnerabilidades e desenvolvimento de estratégias de Red Teaming. Além das operações técnicas, contribuo com uma <strong>visão ofensiva no apoio às decisões de arquitetura e revisão de segurança do produto</strong> — garantindo que os sistemas críticos de saúde sejam desafiados como um adversário real antes de chegarem à produção. Colaboro com o time de defesa para elevar a maturidade de detecção e resposta através de exercícios de Purple Teaming.</p>
           </div>
         </div>
 
@@ -185,7 +260,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="experience-header">
-              <img src="https://media.licdn.com/dms/image/v2/D4D0BAQGe3Jea9lUrOA/company-logo_100_100/B4DZpKN2sFJcAQ-/0/1762181737714/santa_marcelina_saude_logo?e=1768435200&v=beta&t=eT-YU9CbkGwbI9difjDhT7Lj_mOVAX7v0kgVi3sb5TE" alt="Logo Santa Marcelina" class="company-logo">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
               <div>
                 <h3>Cibersegurança & Infraestrutura | Hospital Santa Marcelina</h3>
                 <span class="date">Jun/2024 | Out/2025</span>
@@ -199,13 +274,13 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="experience-header">
-              <img src="https://media.licdn.com/dms/image/v2/D4D0BAQGe3Jea9lUrOA/company-logo_100_100/B4DZpKN2sFJcAQ-/0/1762181737714/santa_marcelina_saude_logo?e=1768435200&v=beta&t=eT-YU9CbkGwbI9difjDhT7Lj_mOVAX7v0kgVi3sb5TE" alt="Logo Santa Marcelina" class="company-logo">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
               <div>
                 <h3>Analista de Sistemas Jr. | Hospital Santa Marcelina</h3>
                 <span class="date">Jul/2023 | Jun/2024</span>
               </div>
             </div>
-           <p>Esta posição foi fundamental para construir minha base técnica em sistemas e bancos de dados sob a ótica de um atacante. A administração diária de Oracle e SQL me deu uma profunda compreensão para identificar e explorar vulnerabilidades complexas de SQL Injection e configurações inseguras. A responsabilidade por integrações via API REST me permitiu analisar a superfície de ataque de aplicações web, focando em falhas de autenticação, autorização e lógica de negócio. A criação de procedures e relatórios em SQL aprimorou minha habilidade de construir payloads avançados para exfiltração de dados durante testes de penetração. Essa experiência prática no "backend" foi essencial para minha especialização em segurança de aplicações (AppSec).</p>
+            <p>Esta posição foi fundamental para construir minha base técnica em sistemas e bancos de dados sob a ótica de um atacante. A administração diária de Oracle e SQL me deu uma profunda compreensão para identificar e explorar vulnerabilidades complexas de SQL Injection e configurações inseguras. A responsabilidade por integrações via API REST me permitiu analisar a superfície de ataque de aplicações web, focando em falhas de autenticação, autorização e lógica de negócio. A criação de procedures e relatórios em SQL aprimorou minha habilidade de construir payloads avançados para exfiltração de dados durante testes de penetração. Essa experiência prática no "backend" foi essencial para minha especialização em segurança de aplicações (AppSec).</p>
           </div>
         </div>
 
@@ -213,7 +288,7 @@
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="experience-header">
-              <img src="https://media.licdn.com/dms/image/v2/D4D0BAQGe3Jea9lUrOA/company-logo_100_100/B4DZpKN2sFJcAQ-/0/1762181737714/santa_marcelina_saude_logo?e=1768435200&v=beta&t=eT-YU9CbkGwbI9difjDhT7Lj_mOVAX7v0kgVi3sb5TE" alt="Logo Santa Marcelina" class="company-logo">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
               <div>
                 <h3>Helpdesk | Hospital Santa Marcelina</h3>
                 <span class="date">Jul/2022 | Jul/2023</span>
@@ -225,112 +300,107 @@
       </div>
     </section>
 
-<section id="certificacoes" aria-labelledby="h-cert">
-  <h2 id="h-cert">Certificações</h2>
+    <section id="certificacoes" aria-labelledby="h-cert">
+      <h2 id="h-cert">Certificações</h2>
 
-  <div class="timeline">
-    <!-- Nova: eJPT adicionada como certificação -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content certification">
-        <h3>INE eJPT v2</h3>
-        <span class="date">Ago/2025</span>
-        <p>Prova 100% prática de pentest com foco em enumeração, exploração e pivoting. Janela total de 48 horas, concluída em 6 horas com 91%. Abrangeu 8 máquinas Linux e Windows, mapeamento de rede e serviços, correção de exploits, pós-exploração e relatório objetivo. Ferramentas e técnicas usadas incluem Nmap, Burp Suite, Metasploit, Hydra, análise de protocolos e tunelamento.</p>
-        <a href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>INE eJPT v2</h3>
+            <span class="date">Ago/2025</span>
+            <p>Prova 100% prática de pentest com foco em enumeração, exploração e pivoting. Janela total de 48 horas, concluída em 6 horas com 91%. Abrangeu 8 máquinas Linux e Windows, mapeamento de rede e serviços, correção de exploits, pós-exploração e relatório objetivo. Ferramentas e técnicas usadas incluem Nmap, Burp Suite, Metasploit, Hydra, análise de protocolos e tunelamento.</p>
+            <a href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>Microsoft SC-900</h3>
+            <span class="date">Fev/2025</span>
+            <p>Fundamentos de Segurança, Conformidade e Identidade na nuvem Microsoft. Cobriu Zero Trust, MFA, gestão de identidades no Entra ID, princípios de proteção com Defender, monitoramento no Sentinel e recursos de conformidade. Base sólida para aplicar mínimo privilégio, segmentar acessos e criar alertas úteis sem complicar a operação.</p>
+            <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>Pentest do Zero ao Profissional v2023</h3>
+            <span class="date">Mai/2023</span>
+            <p>Formação prática da Solyd focada em simulações controladas de intrusão. Montei laboratório, fiz reconhecimento, varredura e análise de serviços, exploração apenas em ambientes de teste e pós-exploração com relatório reproduzível. Ferramentas usadas: Nmap, Burp Suite, Metasploit, Python e PowerShell. Objetivo direto: entender técnicas de ataque para fortalecer detecção, hardening e resposta.</p>
+            <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content certification">
-        <h3>Microsoft SC-900</h3>
-        <span class="date">Fev/2025</span>
-        <p>Fundamentos de Segurança, Conformidade e Identidade na nuvem Microsoft. Cobriu Zero Trust, MFA, gestão de identidades no Entra ID, princípios de proteção com Defender, monitoramento no Sentinel e recursos de conformidade. Base sólida para aplicar mínimo privilégio, segmentar acessos e criar alertas úteis sem complicar a operação.</p>
-        <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+      <!-- Badges -->
+      <div class="badges" role="region" aria-labelledby="badges-title">
+        <h3 id="badges-title" class="badges-title">Badges</h3>
+
+        <!-- Conquistadas -->
+        <div class="badges-group" aria-labelledby="badges-earned-title">
+          <h4 id="badges-earned-title">Conquistadas</h4>
+          <ul class="badges-grid">
+            <li class="badge-card earned">
+              <a class="badge-link" href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial Microsoft SC-900">
+                <img src="https://learn.microsoft.com/pt-br/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="Badge Microsoft SC-900" loading="lazy" width="96" height="96">
+                <span class="badge-title">Microsoft SC-900</span>
+                <span class="badge-status">Conquistada</span>
+              </a>
+            </li>
+
+            <li class="badge-card earned">
+              <a class="badge-link" href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" rel="noopener noreferrer" aria-label="Abrir página da certificação eJPT">
+                <img src="https://us-east-1.graphassets.com/AwCYQkwjSUCbfkm08Ct1Mz/cmcc3wze0lx3007irps13e6k3" alt="Badge eJPT" loading="lazy" width="96" height="96">
+                <span class="badge-title">eJPT</span>
+                <span class="badge-status">Conquistada</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Em progresso -->
+        <div class="badges-group" aria-labelledby="badges-progress-title">
+          <h4 id="badges-progress-title">Em progresso</h4>
+          <ul class="badges-grid">
+            <li class="badge-card in-progress" aria-label="CRTA em progresso">
+              <div class="badge-link" aria-disabled="true">
+                <img src="https://cyberwarfare.live/wp-content/uploads/2023/05/CRTA.png" alt="Badge CRTA" loading="lazy" width="96" height="96">
+                <span class="badge-title">CRTA</span>
+                <span class="badge-status">Em progresso</span>
+              </div>
+            </li>
+
+            <li class="badge-card in-progress" aria-label="CTPS em progresso">
+              <div class="badge-link" aria-disabled="true">
+                <img src="https://images.credly.com/images/e63aa507-b974-4e67-bae6-1e425f6e2a99/image.png" alt="Badge CTPS" loading="lazy" width="96" height="96">
+                <span class="badge-title">CTPS</span>
+                <span class="badge-status">Em progresso</span>
+              </div>
+            </li>
+
+            <li class="badge-card in-progress" aria-label="CompTIA Security+ em progresso">
+              <div class="badge-link" aria-disabled="true">
+                <img src="https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob" alt="Badge CompTIA Security+" loading="lazy" width="96" height="96">
+                <span class="badge-title">CompTIA Security+</span>
+                <span class="badge-status">Em progresso</span>
+              </div>
+            </li>
+
+            <li class="badge-card in-progress" aria-label="OSCP em progresso">
+              <div class="badge-link" aria-disabled="true">
+                <img src="https://images.credly.com/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/twitter_thumb_201604_image.png" alt="Badge OSCP" loading="lazy" width="96" height="96">
+                <span class="badge-title">OSCP</span>
+                <span class="badge-status">Em progresso</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content certification">
-        <h3>Pentest do Zero ao Profissional v2023</h3>
-        <span class="date">Mai/2023</span>
-        <p>Formação prática da Solyd focada em simulações controladas de intrusão. Montei laboratório, fiz reconhecimento, varredura e análise de serviços, exploração apenas em ambientes de teste e pós-exploração com relatório reproduzível. Ferramentas usadas: Nmap, Burp Suite, Metasploit, Python e PowerShell. Objetivo direto: entender técnicas de ataque para fortalecer detecção, hardening e resposta.</p>
-        <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Badges -->
-  <div class="badges" role="region" aria-labelledby="badges-title">
-    <h3 id="badges-title" class="badges-title">Badges</h3>
-
-    <!-- Conquistadas -->
-    <div class="badges-group" aria-labelledby="badges-earned-title">
-      <h4 id="badges-earned-title">Conquistadas</h4>
-      <ul class="badges-grid">
-        <li class="badge-card earned">
-          <a class="badge-link" href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial Microsoft SC-900">
-            <img src="https://learn.microsoft.com/pt-br/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="Badge Microsoft SC-900" loading="lazy" width="96" height="96">
-            <span class="badge-title">Microsoft SC-900</span>
-            <span class="badge-status">Conquistada</span>
-          </a>
-        </li>
-
-        <li class="badge-card earned">
-          <a class="badge-link" href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" rel="noopener noreferrer" aria-label="Abrir página da certificação eJPT">
-            <img src="https://us-east-1.graphassets.com/AwCYQkwjSUCbfkm08Ct1Mz/cmcc3wze0lx3007irps13e6k3" alt="Badge eJPT" loading="lazy" width="96" height="96">
-            <span class="badge-title">eJPT</span>
-            <span class="badge-status">Conquistada</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Em progresso -->
-    <div class="badges-group" aria-labelledby="badges-progress-title">
-      <h4 id="badges-progress-title">Em progresso</h4>
-      <ul class="badges-grid">
-        <li class="badge-card in-progress" aria-label="CRTA em progresso">
-          <div class="badge-link" aria-disabled="true">
-            <img src="https://cyberwarfare.live/wp-content/uploads/2023/05/CRTA.png" alt="Badge CRTA" loading="lazy" width="96" height="96">
-            <span class="badge-title">CRTA</span>
-            <span class="badge-status">Em progresso</span>
-          </div>
-        </li>
-
-        <li class="badge-card in-progress" aria-label="CTPS em progresso">
-          <div class="badge-link" aria-disabled="true">
-            <img src="https://images.credly.com/images/e63aa507-b974-4e67-bae6-1e425f6e2a99/image.png" alt="Badge CTPS" loading="lazy" width="96" height="96">
-            <span class="badge-title">CTPS</span>
-            <span class="badge-status">Em progresso</span>
-          </div>
-        </li>
-
-        <li class="badge-card in-progress" aria-label="CompTIA Security+ em progresso">
-          <div class="badge-link" aria-disabled="true">
-            <img src="https://images.credly.com/images/80d8a06a-c384-42bf-ad36-db81bce5adce/blob" alt="Badge CompTIA Security+" loading="lazy" width="96" height="96">
-            <span class="badge-title">CompTIA Security+</span>
-            <span class="badge-status">Em progresso</span>
-          </div>
-        </li>
-
-        <li class="badge-card in-progress" aria-label="OSCP em progresso">
-          <div class="badge-link" aria-disabled="true">
-            <img
-              src="https://images.credly.com/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/twitter_thumb_201604_image.png"
-              alt="Badge OSCP" loading="lazy" width="96" height="96">
-            <span class="badge-title">OSCP</span>
-            <span class="badge-status">Em progresso</span>
-          </div>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-</section>
-
-</section>
     <section id="contato" aria-labelledby="h-contato">
       <h2 id="h-contato">Contato</h2>
       <p>Conecte-se comigo:</p>
