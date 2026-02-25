@@ -240,6 +240,25 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   if (y) y.textContent = new Date().getFullYear();
 })();
 
+// ==============================
+// Cert progress-bar animation
+// ==============================
+(() => {
+  const fills = $$('.ctt-bar-fill');
+  if (!fills.length || !('IntersectionObserver' in window)) return;
+
+  const obs = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.fill || '0%';
+        obs.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.4 });
+
+  fills.forEach(f => obs.observe(f));
+})();
+
 // ============================
 // Console Easter Egg
 // ============================
