@@ -586,6 +586,164 @@ section h2::after {
 }
 
 /* ===========================
+   Pesquisa de Vulnerabilidades / CVEs
+   =========================== */
+.research-intro {
+  max-width: 720px;
+  margin: -1.5rem auto 2.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.research-intro strong { color: var(--primary-color); }
+
+/* CVE / findings grid */
+.cve-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 600px) {
+  .cve-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .cve-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.cve-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(14, 20, 27, .8);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: border-color .3s ease, transform .25s ease, box-shadow .3s ease;
+}
+.cve-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), #00c6ff);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.cve-card:hover {
+  border-color: rgba(0, 255, 156, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 255, 156, 0.08), 0 4px 12px rgba(0, 0, 0, .4);
+}
+.cve-card:hover::before { transform: scaleX(1); }
+
+.cve-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .6rem;
+}
+.cve-head h3 { color: var(--accent-color); margin: 0; font: 700 1.1rem 'Roboto'; }
+
+.cve-status {
+  flex-shrink: 0;
+  font: 700 .62rem 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: .2rem .5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.cve-status {
+  color: var(--primary-color);
+  background: rgba(0, 255, 156, 0.1);
+  border: 1px solid rgba(0, 255, 156, 0.3);
+}
+
+.cve-type {
+  display: inline-block;
+  font: 600 .78rem 'Roboto Mono', monospace;
+  color: #56d6ff;
+  margin-bottom: .6rem;
+}
+.cve-desc { margin: 0; color: var(--text-muted); font-size: .85rem; line-height: 1.6; }
+
+/* Recognition credit line (GLPI) */
+.cve-credit {
+  margin: .65rem 0 0;
+  padding-top: .6rem;
+  border-top: 1px dashed rgba(255, 255, 255, .08);
+  font-size: .76rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Featured cards with brand logo (NASA / GLPI / Pimcore) */
+.cve-card--nasa,
+.cve-card--glpi,
+.cve-card--pimcore { display: flex; flex-direction: column; }
+.cve-card--nasa .cve-status,
+.cve-card--glpi .cve-status,
+.cve-card--pimcore .cve-status { align-self: flex-start; }
+
+.logo-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .9rem;
+}
+.logo-head h3 { color: var(--accent-color); margin: 0; font: 700 1.1rem 'Roboto'; }
+
+.brand-emblem {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .12);
+}
+.brand-emblem svg { width: 100%; height: 100%; display: block; }
+.brand-emblem--nasa { box-shadow: 0 0 14px rgba(11, 61, 145, .5), 0 0 0 1px rgba(255, 255, 255, .12); }
+.brand-emblem--glpi { box-shadow: 0 0 14px rgba(13, 146, 168, .4), 0 0 0 1px rgba(255, 255, 255, .12); }
+.brand-emblem--pimcore { box-shadow: 0 0 14px rgba(100, 40, 180, .5), 0 0 0 1px rgba(255, 255, 255, .12); }
+
+/* NASA accent */
+.cve-card--nasa {
+  background: linear-gradient(150deg, rgba(11, 61, 145, .18), rgba(14, 20, 27, .85));
+  border-color: rgba(96, 165, 250, .3);
+}
+.cve-card--nasa::before { background: linear-gradient(90deg, #0b3d91, #fc3d21); }
+.cve-card--nasa:hover { border-color: rgba(96, 165, 250, .55); }
+
+.cve-status.is-hof {
+  color: #93c5fd;
+  background: rgba(96, 165, 250, .12);
+  border: 1px solid rgba(96, 165, 250, .35);
+}
+.nasa-link {
+  margin-top: auto;
+  padding-top: .9rem;
+  font: 700 .8rem 'Roboto Mono', monospace;
+  color: #93c5fd;
+  text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+.nasa-link:hover {
+  color: #bfdbfe;
+  text-shadow: 0 0 10px rgba(96, 165, 250, .4);
+}
+
+/* GLPI accent */
+.cve-card--glpi::before { background: linear-gradient(90deg, #0d92a8, #f7931e); }
+.cve-card--glpi:hover { border-color: rgba(13, 146, 168, .45); }
+
+/* Pimcore accent */
+.cve-card--pimcore::before { background: linear-gradient(90deg, #6428b4, #a855f7); }
+.cve-card--pimcore:hover { border-color: rgba(100, 40, 180, .5); }
+
+/* ===========================
    Timeline (Experiência / Certificações)
    =========================== */
 .timeline { position: relative; padding-left: 36px; max-width: 720px; margin: 0 auto; }
