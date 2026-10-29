@@ -1,115 +1,6 @@
-import * as THREE from 'three';
-
 // Utilitários
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
-
-// ============================
-// Matrix Background (Three.js)
-// ============================
-(() => {
-  const container = $('#matrix-bg');
-  if (!container) return;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  container.appendChild(renderer.domElement);
-
-  let canvas, ctx, texture, plane;
-  let fontSize = 12;
-  let cols = 0, rows = 0;
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ';
-  const colState = [];
-
-  function setupCanvas(w, h) {
-    fontSize = Math.max(10, Math.round(w / 160));
-    cols = Math.floor(w / fontSize);
-    rows = Math.floor(h / fontSize);
-
-    canvas = document.createElement('canvas');
-    canvas.width = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-
-    texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter;
-
-    const geo = new THREE.PlaneGeometry(w, h);
-    const mat = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-    plane = new THREE.Mesh(geo, mat);
-    scene.add(plane);
-
-    camera.position.z = 1;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-
-    renderer.setPixelRatio(dpr);
-    renderer.setSize(w, h, false);
-
-    colState.length = 0;
-    for (let i = 0; i < cols; i++) {
-      colState[i] = { y: Math.random() * rows, speed: 0.6 + Math.random() * 2.2 };
-    }
-  }
-
-  function draw(w, h) {
-    ctx.fillStyle = 'rgba(10,15,20,0.1)';
-    ctx.fillRect(0, 0, w, h);
-    ctx.fillStyle = '#00ff9c';
-    ctx.font = `${fontSize}px monospace`;
-
-    for (let i = 0; i < cols; i++) {
-      const s = colState[i];
-      const ch = chars.charAt((Math.random() * chars.length) | 0);
-      const x = i * fontSize;
-      const y = s.y * fontSize;
-      ctx.fillText(ch, x, y);
-      s.y += s.speed / 20;
-      if (y > h && Math.random() > 0.975) s.y = 0;
-    }
-
-    texture.needsUpdate = true;
-  }
-
-  function resize() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    if (plane) {
-      plane.geometry.dispose();
-      plane.material.map.dispose();
-      plane.material.dispose();
-      scene.remove(plane);
-    }
-
-    setupCanvas(w, h);
-  }
-
-  let raf;
-  function loop() {
-    draw(window.innerWidth, window.innerHeight);
-    renderer.render(scene, camera);
-    raf = requestAnimationFrame(loop);
-  }
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function start() {
-    resize();
-    if (!prefersReduced) loop();
-  }
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else if (!prefersReduced) loop();
-  });
-
-  window.addEventListener('resize', resize, { passive: true });
-  start();
-})();
 
 // =====================
 // Typing effect
@@ -117,7 +8,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 (() => {
   const el = $('#typing-effect');
   if (!el) return;
-  const text = 'Analista de Cibersegurança Ofensiva | Pentester | Bug Hunter';
+  const text = 'Offensive Security Engineer | Red Team | Bug Hunter';
   let del = false, curr = '';
   const speed = 100, delSpeed = 50, wait = 1500;
 
@@ -142,22 +33,37 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
   const navHeight = document.querySelector('.site-header')?.offsetHeight || 60;
 
-  function onScroll() {
+  let ticking = false;
+  let lastR = -1;
+
+  function update() {
+    ticking = false;
     const rect = hero.getBoundingClientRect();
     const heroHeight = hero.offsetHeight;
     const effectDistance = heroHeight * 0.6 || 1;
     // scrolled: 0 at page top, increases as hero scrolls off-screen
     const scrolled = Math.max(0, navHeight - rect.top);
     const r = Math.min(scrolled / effectDistance, 1);
+    // Abaixo do hero r fica em 1: não reescreve estilo (nem refaz o blur) a cada scroll
+    if (r === lastR) return;
+    lastR = r;
 
     content.style.opacity = 1 - r;
     content.style.transform = `scale(${1 - r * 0.1})`;
-    content.style.filter = `blur(${r * 8}px)`;
+    content.style.filter = r ? `blur(${r * 8}px)` : 'none';
     content.style.pointerEvents = r > 0.9 ? 'none' : 'auto';
     hero.style.backgroundColor = `rgba(10,15,20,${(1 - r) * 0.8})`;
   }
 
-  onScroll();
+  // No máximo uma atualização por frame
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  update();
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
@@ -168,6 +74,8 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   const sections = $$('main section');
   if (!sections.length || !('IntersectionObserver' in window)) return;
 
+  // Revela quando o topo da seção entra na tela. Com threshold: 0.1, uma seção
+  // mais alta que 10x a tela nunca chegaria a 10% visível e ficaria invisível.
   const obs = new IntersectionObserver((entries) => {
     for (const e of entries) {
       if (e.isIntersecting) {
@@ -176,7 +84,7 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
         obs.unobserve(e.target);
       }
     }
-  }, { threshold: 0.1 });
+  }, { rootMargin: '0px 0px -10% 0px' });
 
   sections.forEach(s => {
     s.style.opacity = '0';
@@ -234,6 +142,30 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   }, { passive: true });
 })();
 
+// ==============================
+// Lightbox dos prints de Hall of Fame
+// ==============================
+(() => {
+  const dialog = $('#proof-dialog');
+  // Sem suporte a <dialog>, o link abre o print em outra aba
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  const img = $('img', dialog);
+
+  $$('[data-proof]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      img.src = link.getAttribute('href');
+      img.alt = link.dataset.proofAlt || '';
+      dialog.showModal();
+    });
+  });
+
+  // Fecha ao clicar fora da imagem
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+})();
+
 // Ano no footer
 (() => {
   const y = document.getElementById('year');
@@ -269,10 +201,10 @@ const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
   const d  = 'color:#4a5568;font-family:monospace;font-size:11px;';
   setTimeout(() => {
     console.log('%c\n[*] Reconhecimento via DevTools detectado.', b);
-    console.log('%c[*] Target%c pgwerneck5@outlook.com', g, y);
+    console.log('%c[*] Target%c pgwerneck5@gmail.com', g, y);
     console.log('%c[+] Curiosidade: HIGH', g);
     console.log('%c[+] Stack: Python · PowerShell · Burp Suite · BloodHound · Impacket', g);
-    console.log('%c[+] CVE count: classified', g);
+    console.log('%c[+] CVE count: 6', g);
     console.log('%c[!] Você chegou até aqui — isso já é critério de contratação.', b);
     console.log('%c    → linkedin.com/in/pgw-script', y);
     console.log('%c    → github.com/5kr1pt', y);

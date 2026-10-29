@@ -17,20 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
-
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
-      }
-    }
-  </script>
 </head>
 <body>
-  <!-- Matrix background -->
-  <div id="matrix-bg" aria-hidden="true"></div>
-
   <header class="site-header">
     <nav class="site-nav" aria-label="Navegação principal">
       <a href="#hero-section" class="nav-brand">5kr1pt</a>
@@ -41,11 +29,11 @@
       </button>
       <ul id="nav-list" class="nav-list" role="list">
         <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#projetos">Projetos</a></li>
         <li><a href="#pesquisa">CVEs</a></li>
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#certificacoes">Certificações</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -58,7 +46,7 @@
       <p class="subtitle">Engenheiro de Segurança Ofensiva</p>
       <div id="typing-effect" aria-live="polite"></div>
       <div class="hero-actions">
-        <a href="#projetos" class="btn">Ver Projetos</a>
+        <a href="#pesquisa" class="btn">Ver CVEs</a>
         <a href="cv.pdf" target="_blank" class="btn btn-ghost" rel="noopener noreferrer">Download CV</a>
       </div>
       <a href="#sobre" class="scroll-indicator" aria-label="Ir para o conteúdo">
@@ -78,7 +66,7 @@
 <div class="about-container">
         <div class="profile-picture-wrapper">
           <div class="profile-picture-container">
-            <img src="foto.jpg" alt="Paulo Werneck – Offensive Security Analyst & Penetration Tester" class="profile-picture-img" loading="lazy" width="180" height="180">
+            <img src="foto.jpg" alt="Paulo Werneck – Offensive Security Engineer (Red Team)" class="profile-picture-img" loading="lazy" width="180" height="180">
           </div>
         </div>
         <div class="about-text">
@@ -87,7 +75,10 @@
           <details open>
             <summary><strong>História</strong></summary>
             <p>
-              Atuo com segurança ofensiva desde os <strong>12 anos</strong>. O que começou sendo uma "brincadeira" por curiosidade virou a forma como eu ganho a vida. <p> Hoje faço <strong>testes de intrusão, análise de vulnerabilidades e modelagem de ameaças</strong> contra aplicações web, mobile, APIs e infraestrutura em ambientes onde falha não é tolerada.
+              Atuo com segurança ofensiva desde os <strong>12 anos</strong>. O que começou sendo uma "brincadeira" por curiosidade virou a forma como eu ganho a vida.
+            </p>
+            <p>
+              Hoje faço <strong>testes de intrusão, análise de vulnerabilidades e modelagem de ameaças</strong> contra aplicações web, mobile, APIs e infraestrutura em ambientes onde falha não é tolerada.
             </p>
             <p>
               Antes de atacar sistemas, eu mantinha eles de pé. Passei por suporte, administração de sistemas e infraestrutura em <strong>ambientes hospitalares críticos</strong>. Essa bagagem me deu uma leitura que lab nenhum ensina, que é como sistemas complexos realmente quebram quando a pressão aperta. Formei em <strong>Ciência da Computação</strong>, estou cursando <strong>Pós-Graduação em Operações Red Team na FIAP</strong> e carrego certificações como <strong>CRTA, eJPT, SYCP e SC-900</strong>.
@@ -109,8 +100,480 @@
 <br>
           <p><span class="hello-world">~/today</span></p>
           <p>
-            Hoje... Eu atuo como <strong>Offensive Cybersecurity Analyst na MV, a maior Healthtech da América Latina</strong>, executando pentests em aplicações bancárias e principalmente de saúde com base em <strong>OWASP WSTG, PTES e OSSTMM</strong>. Meu trabalho é achar a falha antes do atacante real, traduzir essa falha/problema para a borda além de transformar esse achado técnico em decisão de negócio para proteger sistemas que impactam <strong>milhões de vidas</strong>.
+            Hoje... Eu atuo como <strong>Offensive Security Engineer (Red Team) na MV, a maior Healthtech da América Latina</strong>, executando pentests em aplicações bancárias e principalmente de saúde com base em <strong>OWASP WSTG, PTES e OSSTMM</strong>. Meu trabalho é achar a falha antes do atacante real, traduzir essa falha/problema para a borda além de transformar esse achado técnico em decisão de negócio para proteger sistemas que impactam <strong>milhões de vidas</strong>.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pesquisa" aria-labelledby="h-pesq">
+      <h2 id="h-pesq">Pesquisa de Vulnerabilidades &amp; CVEs</h2>
+
+      <p class="research-intro">
+        Pesquisa independente de segurança em produtos de grande adoção. <strong>6 CVEs</strong> atribuídas, entre elas <strong>Wazuh</strong> e <strong>GLPI</strong>, e Hall of Fame na <strong>NASA</strong> e no <strong>Departamento do Trabalho dos EUA</strong>. Sempre sob divulgação responsável.
+      </p>
+
+      <!-- Halls of Fame -->
+      <h3 class="research-group">Reconhecimentos</h3>
+      <div class="hof-grid">
+        <div class="cve-card hof-card cve-card--nasa">
+          <div class="logo-head">
+            <span class="brand-emblem brand-emblem--nasa" aria-hidden="true">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Emblema da NASA">
+                <circle cx="50" cy="50" r="49" fill="#0b3d91"/>
+                <circle cx="30" cy="32" r="1.3" fill="#fff"/>
+                <circle cx="42" cy="26" r="1" fill="#fff"/>
+                <circle cx="64" cy="34" r="1.1" fill="#fff"/>
+                <circle cx="72" cy="46" r="0.9" fill="#fff"/>
+                <ellipse cx="50" cy="54" rx="36" ry="13" fill="none" stroke="#fff" stroke-width="1.4" transform="rotate(-20 50 54)"/>
+                <path d="M20 62 Q48 40 82 50" fill="none" stroke="#fc3d21" stroke-width="6" stroke-linecap="round"/>
+                <text x="50" y="57" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" letter-spacing="1" fill="#fff">NASA</text>
+              </svg>
+            </span>
+            <div>
+              <h4>NASA</h4>
+              <span class="cve-type">Vulnerability Disclosure Program</span>
+            </div>
+          </div>
+          <span class="cve-status is-hof">Hall of Fame</span>
+          <a class="hof-proof" href="hof/nasa-hof.webp" target="_blank" rel="noopener" data-proof data-proof-alt="Hall of Fame do NASA VDP no Bugcrowd com 5kr1pt destacado">
+            <img src="hof/nasa-hof-thumb.webp" alt="5kr1pt no Hall of Fame do NASA VDP" width="345" height="115" loading="lazy" />
+            <span class="hof-proof-hint">ampliar</span>
+          </a>
+          <a class="hof-link" href="https://bugcrowd.com/engagements/nasa-vdp/hall_of_fames" target="_blank" rel="noopener noreferrer">Ver Hall of Fame →</a>
+        </div>
+
+        <div class="cve-card hof-card cve-card--dol">
+          <div class="logo-head">
+            <span class="brand-emblem brand-emblem--dol" aria-hidden="true">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Emblema do U.S. Department of Labor">
+                <circle cx="50" cy="50" r="49" fill="#0f2f63"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                <circle cx="50" cy="50" r="36" fill="#1b5aa6"/>
+                <text x="50" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" letter-spacing="1.5" fill="#c9a227">U.S.</text>
+                <text x="50" y="63" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="21" letter-spacing="1" fill="#fff">DOL</text>
+              </svg>
+            </span>
+            <div>
+              <h4>U.S. Department of Labor</h4>
+              <span class="cve-type">Vulnerability Disclosure Program</span>
+            </div>
+          </div>
+          <span class="cve-status is-hof">Hall of Fame</span>
+          <a class="hof-proof" href="hof/dol-hof.webp" target="_blank" rel="noopener" data-proof data-proof-alt="Hall of Fame do Department of Labor VDP no Bugcrowd com 5kr1pt destacado">
+            <img src="hof/dol-hof-thumb.webp" alt="5kr1pt no Hall of Fame do Department of Labor VDP" width="800" height="267" loading="lazy" />
+            <span class="hof-proof-hint">ampliar</span>
+          </a>
+          <a class="hof-link" href="https://bugcrowd.com/engagements/dol-vdp/hall_of_fames" target="_blank" rel="noopener noreferrer">Ver Hall of Fame →</a>
+        </div>
+      </div>
+
+      <!-- CVEs em produtos de marca forte -->
+      <h3 class="research-group">CVEs em destaque</h3>
+      <div class="cve-grid">
+        <article class="cve-card cve-card--feature cve-card--wazuh">
+          <div class="logo-head">
+            <span class="brand-emblem brand-emblem--wazuh" aria-hidden="true">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo do Wazuh">
+                <rect width="100" height="100" rx="14" fill="#ffffff"/>
+                <text x="46" y="60" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="25" letter-spacing="-1" fill="#3595f9">wazuh</text>
+                <circle cx="84" cy="57" r="3.6" fill="#00a9e5"/>
+              </svg>
+            </span>
+            <div>
+              <h4>Wazuh</h4>
+              <span class="cve-type">SIEM / XDR</span>
+            </div>
+          </div>
+          <p class="cve-id">CVE-2026-74047</p>
+          <p class="cve-desc">Senha de registro de agentes <code>authd.pass</code> exposta a usuário só leitura pelo endpoint de configuração do agente.</p>
+          <div class="cve-meta">
+            <span class="sev sev--medium">6.5 Medium</span>
+            <span class="cve-cwe">CWE-522</span>
+          </div>
+          <p class="cve-credit">Creditado no registro oficial da CVE.</p>
+          <ul class="cve-links" role="list">
+            <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-74047" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-74047 no NVD">NVD</a></li>
+            <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-74047" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-74047 no CVE.org">CVE.org</a></li>
+            <li><a href="https://github.com/wazuh/wazuh/security/advisories/GHSA-qj8j-r988-54rx" target="_blank" rel="noopener noreferrer" aria-label="Advisory do Wazuh no GitHub">Advisory</a></li>
+          </ul>
+        </article>
+
+        <article class="cve-card cve-card--feature cve-card--glpi">
+          <div class="logo-head">
+            <span class="brand-emblem brand-emblem--glpi" aria-hidden="true">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo do GLPI">
+                <rect width="100" height="100" rx="14" fill="#ffffff"/>
+                <text x="49" y="63" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="34" letter-spacing="-1.5" fill="#0d92a8">GLPI</text>
+                <circle cx="77" cy="34" r="4.5" fill="#f7931e"/>
+              </svg>
+            </span>
+            <div>
+              <h4>GLPI</h4>
+              <span class="cve-type">ITSM / Service Desk</span>
+            </div>
+          </div>
+          <p class="cve-id">CVE-2026-53629</p>
+          <p class="cve-desc">SQL injection cega na aba de histórico, presente desde a 9.4 (2019). Corrigida na 10.0.26 e 11.0.8.</p>
+          <div class="cve-meta">
+            <span class="sev sev--high">7.1 High</span>
+            <span class="cve-cwe">CWE-89</span>
+          </div>
+          <ul class="cve-links" role="list">
+            <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-53629" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-53629 no NVD">NVD</a></li>
+            <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-53629" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-53629 no CVE.org">CVE.org</a></li>
+            <li><a href="https://github.com/glpi-project/glpi/security/advisories/GHSA-cpcj-x335-5cmh" target="_blank" rel="noopener noreferrer" aria-label="Advisory do GLPI no GitHub">Advisory</a></li>
+            <li><a class="is-extra" href="https://medium.com/@5kr1pt/reading-the-patch-instead-of-the-code-sql-injection-in-glpi-cve-2026-53629-f58f8aea68de" target="_blank" rel="noopener noreferrer" aria-label="Writeup da CVE-2026-53629 no Medium">Writeup</a></li>
+            <li><a class="is-extra" href="https://github.com/5kr1pt/glpi-logbleed" target="_blank" rel="noopener noreferrer" aria-label="PoC glpi-logbleed no GitHub">PoC</a></li>
+          </ul>
+        </article>
+
+        <article class="cve-card cve-card--feature cve-card--pimcore">
+          <div class="logo-head">
+            <span class="brand-emblem brand-emblem--pimcore" aria-hidden="true">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo do Pimcore">
+                <rect width="100" height="100" rx="16" fill="#ffffff"/>
+                <g transform="translate(50 50) scale(0.52) translate(-292.5 -200)" fill="#6428b4">
+                  <path d="m336.25 168.542c-10.833 0-20.417 5.625-26.042 13.958l-22.916 34.583c-5.625 8.334-15.209 13.959-26.042 13.959-17.292 0-31.25-13.959-31.25-31.25 0-17.292 13.958-31.25 31.25-31.25 10.833 0 20.208 5.416 25.833 13.75l4.167 6.25 7.5-11.25-1.042-1.667c-7.916-11.667-21.25-19.375-36.458-19.375-24.167 0-43.75 19.583-43.75 43.75s19.583 43.75 43.75 43.75c15.208 0 28.75-7.708 36.458-19.583l8.542-12.917 3.958 6.042c5.625 8.333 15.209 13.958 26.042 13.958 17.292 0 31.25-13.958 31.25-31.25s-13.958-31.458-31.25-31.458zm0 50c-6.458 0-12.292-3.334-15.625-8.542l-6.875-10.208 6.875-10.417c3.333-5 9.167-8.333 15.625-8.333 10.417 0 18.75 8.333 18.75 18.75 0 10.416-8.333 18.75-18.75 18.75z"/>
+                </g>
+              </svg>
+            </span>
+            <div>
+              <h4>Pimcore</h4>
+              <span class="cve-type">PIM / DXP</span>
+            </div>
+          </div>
+          <p class="cve-id is-pending">CVE em emissão</p>
+          <p class="cve-desc">Advisory aceito pelo time de segurança da Pimcore. Detalhes após a publicação da correção.</p>
+          <div class="cve-meta">
+            <span class="sev sev--high">8.8 High</span>
+            <span class="cve-status is-pending">Advisory aceito</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Demais CVEs -->
+      <h3 class="research-group">Outras CVEs</h3>
+      <ul class="cve-list" role="list">
+        <li class="cve-row">
+          <div class="cve-row-main">
+            <div class="cve-row-head">
+              <h4>FreeScout</h4>
+              <span class="cve-id">CVE-2026-53591</span>
+              <span class="sev sev--high">8.6 High</span>
+            </div>
+            <p class="cve-desc">Injeção de mensagens em qualquer conversa, sem autenticação, via bypass de HMAC.</p>
+          </div>
+          <ul class="cve-links" role="list">
+            <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-53591" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-53591 no NVD">NVD</a></li>
+            <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-53591" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-53591 no CVE.org">CVE.org</a></li>
+            <li><a href="https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-8vm3-wwq4-ggfx" target="_blank" rel="noopener noreferrer" aria-label="Advisory do FreeScout no GitHub">Advisory</a></li>
+          </ul>
+        </li>
+
+        <li class="cve-row">
+          <div class="cve-row-main">
+            <div class="cve-row-head">
+              <h4>FacturaScripts</h4>
+              <span class="cve-id">CVE-2026-45693</span>
+              <span class="sev sev--high">7.5 High</span>
+            </div>
+            <p class="cve-desc">Path traversal sem autenticação lê documentos privados do servidor.</p>
+          </div>
+          <ul class="cve-links" role="list">
+            <li><a href="https://github.com/NeoRazorX/facturascripts/security/advisories/GHSA-cv65-7cg8-r623" target="_blank" rel="noopener noreferrer" aria-label="Advisory do FacturaScripts no GitHub">Advisory</a></li>
+          </ul>
+        </li>
+
+        <li class="cve-row">
+          <div class="cve-row-main">
+            <div class="cve-row-head">
+              <h4>ITFlow</h4>
+              <span class="cve-id">CVE-2026-77300</span>
+              <span class="sev sev--high">7.1 High</span>
+            </div>
+            <p class="cve-desc">SQL injection na geração de links de compartilhamento.</p>
+          </div>
+          <ul class="cve-links" role="list">
+            <li><a href="https://github.com/itflow-org/itflow/security/advisories/GHSA-5g5j-37c8-hm7m" target="_blank" rel="noopener noreferrer" aria-label="Advisory do ITFlow no GitHub">Advisory</a></li>
+          </ul>
+        </li>
+
+        <li class="cve-row">
+          <div class="cve-row-main">
+            <div class="cve-row-head">
+              <h4>EspoCRM</h4>
+              <span class="cve-id">CVE-2026-46691</span>
+              <span class="sev sev--medium">6.5 Medium</span>
+            </div>
+            <p class="cve-desc">IDOR expõe o CSV de importações de outros usuários.</p>
+          </div>
+          <ul class="cve-links" role="list">
+            <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-46691" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-46691 no NVD">NVD</a></li>
+            <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-46691" target="_blank" rel="noopener noreferrer" aria-label="CVE-2026-46691 no CVE.org">CVE.org</a></li>
+            <li><a href="https://github.com/espocrm/espocrm/security/advisories/GHSA-rrcj-rhc2-ch5q" target="_blank" rel="noopener noreferrer" aria-label="Advisory do EspoCRM no GitHub">Advisory</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Lightbox dos prints de Hall of Fame -->
+      <dialog id="proof-dialog" class="proof-dialog" aria-label="Print do Hall of Fame">
+        <form method="dialog"><button class="proof-close" aria-label="Fechar">&times;</button></form>
+        <img alt="" />
+      </dialog>
+    </section>
+
+    <section id="experiencia" aria-labelledby="h-exp">
+      <h2 id="h-exp">Experiências</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="experience-header">
+              <img src="mv_logo.jpg" alt="Logo MV" class="company-logo" loading="lazy" width="45" height="45">
+              <div>
+                <h3>Offensive Security Engineer (Red Team) | MV</h3>
+                <span class="date">Nov/2025 | <span class="date-current">Atual</span></span>
+              </div>
+            </div>
+            <p>Foco em operações de segurança ofensiva e simulação de adversários na maior empresa de software de gestão de saúde da América Latina. Realizo testes de intrusão em ambientes complexos, análise de vulnerabilidades e desenvolvimento de estratégias de Red Teaming. Além das operações técnicas, contribuo com uma <strong>visão ofensiva no apoio às decisões de arquitetura e revisão de segurança do produto</strong> — garantindo que os sistemas críticos de saúde sejam desafiados como um adversário real antes de chegarem à produção. Colaboro com o time de defesa para elevar a maturidade de detecção e resposta através de exercícios de Purple Teaming.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="experience-header">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
+              <div>
+                <h3>Cibersegurança & Infraestrutura | Hospital Santa Marcelina</h3>
+                <span class="date">Jun/2024 | Out/2025</span>
+              </div>
+            </div>
+            <p>Nesta função, aplico uma mentalidade ofensiva para fortalecer a segurança de um ambiente crítico 24x7. Utilizo meu profundo conhecimento em infraestrutura para identificar e explorar vetores de ataque em Active Directory, como falhas em ACLs e configurações de privilégio. Minha experiência prática em firewalls (FortiGate) me permite simular bypass de políticas, testar a segurança de VPNs e webfilters. Utilizo PowerShell não apenas para auditorias, mas principalmente para desenvolver scripts de enumeração e automação de tarefas ofensivas (Living off the Land). Conduzo testes contra o ambiente Microsoft 365, avaliando a robustez de MFA e defesas anti-phishing. Meu foco é traduzir vulnerabilidades técnicas em riscos operacionais tangíveis, alinhando os testes de penetração com a realidade de um ambiente regulado pela LGPD.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="experience-header">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
+              <div>
+                <h3>Analista de Sistemas Jr. | Hospital Santa Marcelina</h3>
+                <span class="date">Jul/2023 | Jun/2024</span>
+              </div>
+            </div>
+            <p>Esta posição foi fundamental para construir minha base técnica em sistemas e bancos de dados sob a ótica de um atacante. A administração diária de Oracle e SQL me deu uma profunda compreensão para identificar e explorar vulnerabilidades complexas de SQL Injection e configurações inseguras. A responsabilidade por integrações via API REST me permitiu analisar a superfície de ataque de aplicações web, focando em falhas de autenticação, autorização e lógica de negócio. A criação de procedures e relatórios em SQL aprimorou minha habilidade de construir payloads avançados para exfiltração de dados durante testes de penetração. Essa experiência prática no "backend" foi essencial para minha especialização em segurança de aplicações (AppSec).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="experience-header">
+              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
+              <div>
+                <h3>Helpdesk | Hospital Santa Marcelina</h3>
+                <span class="date">Jul/2022 | Jul/2023</span>
+              </div>
+            </div>
+            <p>No 1º nível, atendia mais de 90 chamados por dia, por ligação e e-mail, garantindo que as pessoas conseguissem trabalhar, realizava o provisionamento de contas no AD e Microsoft 365 com MFA, padronização de imagens, atualização de estações e correção de problemas de acesso, e-mail e rede. Organizei filas por impacto, cumpri SLA, escalei quando necessário e registrei lições aprendidas que são usadas até hoje como documentação pela equipe de suporte. Treinei usuários em boas práticas de senha e phishing e mantive comunicação simples e direta. Essa base me deu disciplina de operação, cuidado com dados e foco em resolver rápido sem abrir mão de segurança.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificacoes" aria-labelledby="h-cert">
+      <h2 id="h-cert">Certificações</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>CRTA — Certified Red Team Analyst</h3>
+            <div class="cert-meta-row">
+              <span class="date">Abr/2026</span>
+              <span class="cert-score">100% todas as flags &middot; 1h56m/6h</span>
+            </div>
+            <p>Exame 100% prático de Red Team em ambiente Active Directory corporativo simulando um adversário real do início ao fim. Percorreu toda a kill chain: reconhecimento, acesso inicial via phishing e serviços expostos, escalada de privilégios locais e de domínio, movimentação lateral, abuso de relações de confiança e delegação Kerberos, persistência e exfiltração de dados, com uso de C2 e disciplina de OPSEC ao longo de toda a operação. Todas as flags capturadas em menos de 2 horas de uma janela de 6h.</p>
+            <a href="https://labs.cyberwarfare.live/credential/achievement/69ebe721656268169c3ef458" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>INE eJPT v2</h3>
+            <div class="cert-meta-row">
+              <span class="date">Ago/2025</span>
+              <span class="cert-score">91 / 100 &middot; 6h/48h</span>
+            </div>
+            <p>Prova 100% prática de pentest com foco em enumeração, exploração e pivoting. Abrangeu 8 máquinas Linux e Windows, mapeamento de rede e serviços, correção de exploits, pós-exploração e relatório objetivo. Ferramentas: Nmap, Burp Suite, Metasploit, Hydra, análise de protocolos e tunelamento.</p>
+            <a href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>Microsoft SC-900</h3>
+            <div class="cert-meta-row">
+              <span class="date">Fev/2025</span>
+              <span class="cert-score">920 / 1000 &middot; 20m/45min</span>
+            </div>
+            <p>Fundamentos de Segurança, Conformidade e Identidade na nuvem Microsoft. Cobriu Zero Trust, MFA, gestão de identidades no Entra ID, princípios de proteção com Defender, monitoramento no Sentinel e recursos de conformidade. Base sólida para aplicar mínimo privilégio, segmentar acessos e criar alertas úteis sem complicar a operação.</p>
+            <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content certification">
+            <h3>Pentest do Zero ao Profissional v2023</h3>
+            <span class="date">Mai/2023</span>
+            <p>Formação prática da Solyd focada em simulações controladas de intrusão. Montei laboratório, fiz reconhecimento, varredura e análise de serviços, exploração apenas em ambientes de teste e pós-exploração com relatório reproduzível. Ferramentas usadas: Nmap, Burp Suite, Metasploit, Python e PowerShell. Objetivo direto: entender técnicas de ataque para fortalecer detecção, hardening e resposta.</p>
+            <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="badges" role="region" aria-labelledby="badges-title">
+        <h3 id="badges-title" class="badges-title">Badges</h3>
+
+        <!-- Conquistadas -->
+        <div class="badges-group" aria-labelledby="badges-earned-title">
+          <h4 id="badges-earned-title">Conquistadas</h4>
+          <ul class="badges-grid">
+            <li class="badge-card earned">
+              <a class="badge-link" href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial Microsoft SC-900">
+                <img src="badges/sc900.svg" alt="Badge Microsoft SC-900" loading="lazy" width="96" height="96">
+                <span class="badge-title">Microsoft SC-900</span>
+                <span class="badge-status">Conquistada</span>
+              </a>
+            </li>
+
+            <li class="badge-card earned">
+              <a class="badge-link" href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" rel="noopener noreferrer" aria-label="Abrir página da certificação eJPT">
+                <img src="badges/ejpt.svg" alt="Badge eJPT" loading="lazy" width="96" height="96">
+                <span class="badge-title">eJPT</span>
+                <span class="badge-status">Conquistada</span>
+              </a>
+            </li>
+
+            <li class="badge-card earned">
+              <a class="badge-link" href="https://labs.cyberwarfare.live/credential/achievement/69ebe721656268169c3ef458" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial CRTA">
+                <img src="badges/crta.webp" alt="Badge CRTA" loading="lazy" width="96" height="96">
+                <span class="badge-title">CRTA</span>
+                <span class="badge-status">Conquistada</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Próximas Certificações -->
+        <div class="badges-group" aria-labelledby="targets-title">
+          <h4 id="targets-title">Próximas Certificações</h4>
+          <ul class="badges-grid">
+
+            <!-- 70% -->
+            <li class="badge-card upcoming">
+              <img src="badges/cwhi.webp" alt="Badge CWHI" loading="lazy" width="96" height="96">
+              <span class="badge-title">CWHI</span>
+              <span class="badge-sub">HackingClub</span>
+              <div class="badge-prog">
+                <span class="badge-pct">70%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-green" data-fill="70%"></div></div>
+              </div>
+            </li>
+
+            <!-- 60% -->
+            <li class="badge-card upcoming">
+              <img src="badges/ewptx.svg" alt="Badge eWPTXv2" loading="lazy" width="96" height="96">
+              <span class="badge-title">eWPTXv2</span>
+              <span class="badge-sub">eLearnSecurity</span>
+              <div class="badge-prog">
+                <span class="badge-pct">60%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-yellow" data-fill="60%"></div></div>
+              </div>
+            </li>
+
+            <!-- 30% -->
+            <li class="badge-card upcoming">
+              <img src="badges/cwes.webp" alt="Badge CWES" loading="lazy" width="96" height="96">
+              <span class="badge-title">CWES</span>
+              <span class="badge-sub">HackTheBox</span>
+              <div class="badge-prog">
+                <span class="badge-pct">30%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-blue" data-fill="30%"></div></div>
+              </div>
+            </li>
+
+            <!-- 25% -->
+            <li class="badge-card upcoming">
+              <img src="badges/cpts.webp" alt="Badge CPTS" loading="lazy" width="96" height="96">
+              <span class="badge-title">CPTS</span>
+              <span class="badge-sub">HackTheBox</span>
+              <div class="badge-prog">
+                <span class="badge-pct">25%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-blue" data-fill="25%"></div></div>
+              </div>
+            </li>
+
+            <!-- 4% -->
+            <li class="badge-card upcoming">
+              <img src="badges/oscp.webp" alt="Badge OSCP" loading="lazy" width="96" height="96">
+              <span class="badge-title">OSCP</span>
+              <span class="badge-sub">Offensive Security</span>
+              <div class="badge-prog">
+                <span class="badge-pct">4%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="4%"></div></div>
+              </div>
+            </li>
+
+            <!-- 0% -->
+            <li class="badge-card upcoming">
+              <img src="badges/oswe.webp" alt="Badge OSWE" loading="lazy" width="96" height="96">
+              <span class="badge-title">OSWE</span>
+              <span class="badge-sub">Offensive Security</span>
+              <div class="badge-prog">
+                <span class="badge-pct">0%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
+              </div>
+            </li>
+
+            <li class="badge-card upcoming">
+              <img src="badges/osep.webp" alt="Badge OSEP" loading="lazy" width="96" height="96">
+              <span class="badge-title">OSEP</span>
+              <span class="badge-sub">Offensive Security</span>
+              <div class="badge-prog">
+                <span class="badge-pct">0%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
+              </div>
+            </li>
+
+            <li class="badge-card upcoming">
+              <img src="badges/osed.webp" alt="Badge OSED" loading="lazy" width="96" height="96">
+              <span class="badge-title">OSED</span>
+              <span class="badge-sub">Offensive Security</span>
+              <div class="badge-prog">
+                <span class="badge-pct">0%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
+              </div>
+            </li>
+
+            <li class="badge-card upcoming">
+              <img src="badges/osee.webp" alt="Badge OSEE" loading="lazy" width="96" height="96">
+              <span class="badge-title">OSEE</span>
+              <span class="badge-sub">Offensive Security</span>
+              <div class="badge-prog">
+                <span class="badge-pct">0%</span>
+                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
+              </div>
+            </li>
+
+          </ul>
         </div>
       </div>
     </section>
@@ -229,7 +692,7 @@
         </div>
 
         <div class="project-card">
-          <h3><a href="https://github.com/ScriptHit/pe_analyzer" target="_blank" rel="noopener">PE Analyzer</a></h3>
+          <h3><a href="https://github.com/5kr1pt/pe_analyzer" target="_blank" rel="noopener">PE Analyzer</a></h3>
           <p>Análise estática de executáveis PE. Headers, seções, imports e alertas de anomalias.</p>
           <div class="tags">
             <span class="tag">Windows</span>
@@ -255,358 +718,16 @@
       </div>
     </section>
 
-    <section id="pesquisa" aria-labelledby="h-pesq">
-      <h2 id="h-pesq">Pesquisa de Vulnerabilidades &amp; CVEs</h2>
-
-      <p class="research-intro">
-        Pesquisa independente de segurança em produtos de grande adoção. <strong>5 CVEs</strong> reportadas, entre elas <strong>GLPI</strong> e <strong>Pimcore</strong>, sempre sob divulgação responsável.
-      </p>
-
-      <!-- CVE / findings grid -->
-      <div class="cve-grid">
-        <div class="cve-card cve-card--nasa">
-          <div class="logo-head">
-            <span class="brand-emblem brand-emblem--nasa" aria-hidden="true">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Emblema da NASA">
-                <circle cx="50" cy="50" r="49" fill="#0b3d91"/>
-                <circle cx="30" cy="32" r="1.3" fill="#fff"/>
-                <circle cx="42" cy="26" r="1" fill="#fff"/>
-                <circle cx="64" cy="34" r="1.1" fill="#fff"/>
-                <circle cx="72" cy="46" r="0.9" fill="#fff"/>
-                <ellipse cx="50" cy="54" rx="36" ry="13" fill="none" stroke="#fff" stroke-width="1.4" transform="rotate(-20 50 54)"/>
-                <path d="M20 62 Q48 40 82 50" fill="none" stroke="#fc3d21" stroke-width="6" stroke-linecap="round"/>
-                <text x="50" y="57" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" letter-spacing="1" fill="#fff">NASA</text>
-              </svg>
-            </span>
-            <div>
-              <h3>NASA</h3>
-              <span class="cve-type">Vulnerability Disclosure Program</span>
-            </div>
-          </div>
-          <span class="cve-status is-hof">Hall of Fame</span>
-          <a class="nasa-link" href="https://bugcrowd.com/engagements/nasa-vdp/hall_of_fames" target="_blank" rel="noopener noreferrer">Ver Hall of Fame →</a>
-        </div>
-
-        <div class="cve-card cve-card--glpi">
-          <div class="logo-head">
-            <span class="brand-emblem brand-emblem--glpi" aria-hidden="true">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo do GLPI">
-                <rect width="100" height="100" rx="14" fill="#ffffff"/>
-                <text x="49" y="63" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="34" letter-spacing="-1.5" fill="#0d92a8">GLPI</text>
-                <circle cx="77" cy="34" r="4.5" fill="#f7931e"/>
-              </svg>
-            </span>
-            <div>
-              <h3>GLPI</h3>
-            </div>
-          </div>
-          <span class="cve-status">CVE</span>
-          <p class="cve-credit">Creditado no advisory de segurança do projeto.</p>
-        </div>
-
-        <div class="cve-card cve-card--pimcore">
-          <div class="logo-head">
-            <span class="brand-emblem brand-emblem--pimcore" aria-hidden="true">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo do Pimcore">
-                <rect width="100" height="100" rx="16" fill="#ffffff"/>
-                <g transform="translate(50 50) scale(0.52) translate(-292.5 -200)" fill="#6428b4">
-                  <path d="m336.25 168.542c-10.833 0-20.417 5.625-26.042 13.958l-22.916 34.583c-5.625 8.334-15.209 13.959-26.042 13.959-17.292 0-31.25-13.959-31.25-31.25 0-17.292 13.958-31.25 31.25-31.25 10.833 0 20.208 5.416 25.833 13.75l4.167 6.25 7.5-11.25-1.042-1.667c-7.916-11.667-21.25-19.375-36.458-19.375-24.167 0-43.75 19.583-43.75 43.75s19.583 43.75 43.75 43.75c15.208 0 28.75-7.708 36.458-19.583l8.542-12.917 3.958 6.042c5.625 8.333 15.209 13.958 26.042 13.958 17.292 0 31.25-13.958 31.25-31.25s-13.958-31.458-31.25-31.458zm0 50c-6.458 0-12.292-3.334-15.625-8.542l-6.875-10.208 6.875-10.417c3.333-5 9.167-8.333 15.625-8.333 10.417 0 18.75 8.333 18.75 18.75 0 10.416-8.333 18.75-18.75 18.75z"/>
-                </g>
-              </svg>
-            </span>
-            <div>
-              <h3>Pimcore</h3>
-            </div>
-          </div>
-          <span class="cve-status">CVE</span>
-        </div>
-
-        <div class="cve-card">
-          <div class="cve-head">
-            <h3>FacturaScripts</h3>
-            <span class="cve-status">CVE</span>
-          </div>
-        </div>
-
-        <div class="cve-card">
-          <div class="cve-head">
-            <h3>EspoCRM</h3>
-            <span class="cve-status">CVE</span>
-          </div>
-        </div>
-
-        <div class="cve-card">
-          <div class="cve-head">
-            <h3>FreeScout</h3>
-            <span class="cve-status">CVE</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experiencia" aria-labelledby="h-exp">
-      <h2 id="h-exp">Experiências</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="experience-header">
-              <img src="mv_logo.jpg" alt="Logo MV" class="company-logo" loading="lazy" width="45" height="45">
-              <div>
-                <h3>Offensive Cybersecurity Engineer (Red Team) | MV</h3>
-                <span class="date">Nov/2025 | <span class="date-current">Atual</span></span>
-              </div>
-            </div>
-            <p>Foco em operações de segurança ofensiva e simulação de adversários na maior empresa de software de gestão de saúde da América Latina. Realizo testes de intrusão em ambientes complexos, análise de vulnerabilidades e desenvolvimento de estratégias de Red Teaming. Além das operações técnicas, contribuo com uma <strong>visão ofensiva no apoio às decisões de arquitetura e revisão de segurança do produto</strong> — garantindo que os sistemas críticos de saúde sejam desafiados como um adversário real antes de chegarem à produção. Colaboro com o time de defesa para elevar a maturidade de detecção e resposta através de exercícios de Purple Teaming.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="experience-header">
-              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
-              <div>
-                <h3>Cibersegurança & Infraestrutura | Hospital Santa Marcelina</h3>
-                <span class="date">Jun/2024 | Out/2025</span>
-              </div>
-            </div>
-            <p>Nesta função, aplico uma mentalidade ofensiva para fortalecer a segurança de um ambiente crítico 24x7. Utilizo meu profundo conhecimento em infraestrutura para identificar e explorar vetores de ataque em Active Directory, como falhas em ACLs e configurações de privilégio. Minha experiência prática em firewalls (FortiGate) me permite simular bypass de políticas, testar a segurança de VPNs e webfilters. Utilizo PowerShell não apenas para auditorias, mas principalmente para desenvolver scripts de enumeração e automação de tarefas ofensivas (Living off the Land). Conduzo testes contra o ambiente Microsoft 365, avaliando a robustez de MFA e defesas anti-phishing. Meu foco é traduzir vulnerabilidades técnicas em riscos operacionais tangíveis, alinhando os testes de penetração com a realidade de um ambiente regulado pela LGPD.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="experience-header">
-              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
-              <div>
-                <h3>Analista de Sistemas Jr. | Hospital Santa Marcelina</h3>
-                <span class="date">Jul/2023 | Jun/2024</span>
-              </div>
-            </div>
-            <p>Esta posição foi fundamental para construir minha base técnica em sistemas e bancos de dados sob a ótica de um atacante. A administração diária de Oracle e SQL me deu uma profunda compreensão para identificar e explorar vulnerabilidades complexas de SQL Injection e configurações inseguras. A responsabilidade por integrações via API REST me permitiu analisar a superfície de ataque de aplicações web, focando em falhas de autenticação, autorização e lógica de negócio. A criação de procedures e relatórios em SQL aprimorou minha habilidade de construir payloads avançados para exfiltração de dados durante testes de penetração. Essa experiência prática no "backend" foi essencial para minha especialização em segurança de aplicações (AppSec).</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="experience-header">
-              <img src="cssm_logo.jpg" alt="Logo Santa Marcelina" class="company-logo" loading="lazy" width="45" height="45">
-              <div>
-                <h3>Helpdesk | Hospital Santa Marcelina</h3>
-                <span class="date">Jul/2022 | Jul/2023</span>
-              </div>
-            </div>
-            <p>No 1º nível, atendia mais de 90 chamados por dia, por ligação e e-mail, garantindo que as pessoas conseguissem trabalhar, realizava o provisionamento de contas no AD e Microsoft 365 com MFA, padronização de imagens, atualização de estações e correção de problemas de acesso, e-mail e rede. Organizei filas por impacto, cumpri SLA, escalei quando necessário e registrei lições aprendidas que são usadas até hoje como documentação pela equipe de suporte. Treinei usuários em boas práticas de senha e phishing e mantive comunicação simples e direta. Essa base me deu disciplina de operação, cuidado com dados e foco em resolver rápido sem abrir mão de segurança.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="certificacoes" aria-labelledby="h-cert">
-      <h2 id="h-cert">Certificações</h2>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content certification">
-            <h3>CRTA — Certified Red Team Analyst</h3>
-            <div class="cert-meta-row">
-              <span class="date">Abr/2026</span>
-              <span class="cert-score">100% todas as flags &middot; 1h56m/6h</span>
-            </div>
-            <p>Exame 100% prático de Red Team em ambiente Active Directory corporativo simulando um adversário real do início ao fim. Percorreu toda a kill chain: reconhecimento, acesso inicial via phishing e serviços expostos, escalada de privilégios locais e de domínio, movimentação lateral, abuso de relações de confiança e delegação Kerberos, persistência e exfiltração de dados, com uso de C2 e disciplina de OPSEC ao longo de toda a operação. Todas as flags capturadas em menos de 2 horas de uma janela de 6h.</p>
-            <a href="https://labs.cyberwarfare.live/credential/achievement/69ebe721656268169c3ef458" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content certification">
-            <h3>INE eJPT v2</h3>
-            <div class="cert-meta-row">
-              <span class="date">Ago/2025</span>
-              <span class="cert-score">91 / 100 &middot; 6h/48h</span>
-            </div>
-            <p>Prova 100% prática de pentest com foco em enumeração, exploração e pivoting. Abrangeu 8 máquinas Linux e Windows, mapeamento de rede e serviços, correção de exploits, pós-exploração e relatório objetivo. Ferramentas: Nmap, Burp Suite, Metasploit, Hydra, análise de protocolos e tunelamento.</p>
-            <a href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content certification">
-            <h3>Microsoft SC-900</h3>
-            <span class="date">Fev/2025</span>
-			<span class="cert-score">920 / 1000 &middot; 20m/45min</span>
-            <p>Fundamentos de Segurança, Conformidade e Identidade na nuvem Microsoft. Cobriu Zero Trust, MFA, gestão de identidades no Entra ID, princípios de proteção com Defender, monitoramento no Sentinel e recursos de conformidade. Base sólida para aplicar mínimo privilégio, segmentar acessos e criar alertas úteis sem complicar a operação.</p>
-            <a href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content certification">
-            <h3>Pentest do Zero ao Profissional v2023</h3>
-            <span class="date">Mai/2023</span>
-            <p>Formação prática da Solyd focada em simulações controladas de intrusão. Montei laboratório, fiz reconhecimento, varredura e análise de serviços, exploração apenas em ambientes de teste e pós-exploração com relatório reproduzível. Ferramentas usadas: Nmap, Burp Suite, Metasploit, Python e PowerShell. Objetivo direto: entender técnicas de ataque para fortalecer detecção, hardening e resposta.</p>
-            <a href="https://solyd.com.br/verificar/fTtJgQ7v6R/" target="_blank" class="btn" rel="noopener noreferrer">Ver Credencial</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Badges -->
-      <div class="badges" role="region" aria-labelledby="badges-title">
-        <h3 id="badges-title" class="badges-title">Badges</h3>
-
-        <!-- Conquistadas -->
-        <div class="badges-group" aria-labelledby="badges-earned-title">
-          <h4 id="badges-earned-title">Conquistadas</h4>
-          <ul class="badges-grid">
-            <li class="badge-card earned">
-              <a class="badge-link" href="https://learn.microsoft.com/api/credentials/share/pt-br/scripthit/B5785894B82B286E?sharingId=36C9293D58F3624A" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial Microsoft SC-900">
-                <img src="badges/sc900.svg" alt="Badge Microsoft SC-900" loading="lazy" width="96" height="96">
-                <span class="badge-title">Microsoft SC-900</span>
-                <span class="badge-status">Conquistada</span>
-              </a>
-            </li>
-
-            <li class="badge-card earned">
-              <a class="badge-link" href="https://certs.ine.com/5d48fef9-f80d-48e5-b258-ab2e9264ccd9#acc.8tAzxbMD" target="_blank" rel="noopener noreferrer" aria-label="Abrir página da certificação eJPT">
-                <img src="badges/ejpt.svg" alt="Badge eJPT" loading="lazy" width="96" height="96">
-                <span class="badge-title">eJPT</span>
-                <span class="badge-status">Conquistada</span>
-              </a>
-            </li>
-
-            <li class="badge-card earned">
-              <a class="badge-link" href="https://labs.cyberwarfare.live/credential/achievement/69ebe721656268169c3ef458" target="_blank" rel="noopener noreferrer" aria-label="Abrir credencial CRTA">
-                <img src="badges/crta.webp" alt="Badge CRTA" loading="lazy" width="96" height="96">
-                <span class="badge-title">CRTA</span>
-                <span class="badge-status">Conquistada</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Próximas Certificações -->
-        <div class="badges-group" aria-labelledby="targets-title">
-          <h4 id="targets-title">Próximas Certificações</h4>
-          <ul class="badges-grid">
-
-            <!-- 70% -->
-            <li class="badge-card upcoming">
-              <img src="badges/cwhi.png" alt="Badge CWHI" loading="lazy" width="96" height="96">
-              <span class="badge-title">CWHI</span>
-              <span class="badge-sub">HackingClub</span>
-              <div class="badge-prog">
-                <span class="badge-pct">70%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-green" data-fill="70%"></div></div>
-              </div>
-            </li>
-
-            <!-- 60% -->
-            <li class="badge-card upcoming">
-              <img src="badges/ewptx.svg" alt="Badge eWPTXv2" loading="lazy" width="96" height="96">
-              <span class="badge-title">eWPTXv2</span>
-              <span class="badge-sub">eLearnSecurity</span>
-              <div class="badge-prog">
-                <span class="badge-pct">60%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-yellow" data-fill="60%"></div></div>
-              </div>
-            </li>
-
-            <!-- 30% -->
-            <li class="badge-card upcoming">
-              <img src="badges/cwes.png" alt="Badge CWES" loading="lazy" width="96" height="96">
-              <span class="badge-title">CWES</span>
-              <span class="badge-sub">HackTheBox</span>
-              <div class="badge-prog">
-                <span class="badge-pct">30%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-blue" data-fill="30%"></div></div>
-              </div>
-            </li>
-
-            <!-- 25% -->
-            <li class="badge-card upcoming">
-              <img src="badges/cpts.png" alt="Badge CPTS" loading="lazy" width="96" height="96">
-              <span class="badge-title">CPTS</span>
-              <span class="badge-sub">HackTheBox</span>
-              <div class="badge-prog">
-                <span class="badge-pct">25%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-blue" data-fill="25%"></div></div>
-              </div>
-            </li>
-
-            <!-- 4% -->
-            <li class="badge-card upcoming">
-              <img src="badges/oscp.png" alt="Badge OSCP" loading="lazy" width="96" height="96">
-              <span class="badge-title">OSCP</span>
-              <span class="badge-sub">Offensive Security</span>
-              <div class="badge-prog">
-                <span class="badge-pct">4%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="4%"></div></div>
-              </div>
-            </li>
-
-            <!-- 0% -->
-            <li class="badge-card upcoming">
-              <img src="badges/oswe.png" alt="Badge OSWE" loading="lazy" width="96" height="96">
-              <span class="badge-title">OSWE</span>
-              <span class="badge-sub">Offensive Security</span>
-              <div class="badge-prog">
-                <span class="badge-pct">0%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
-              </div>
-            </li>
-
-            <li class="badge-card upcoming">
-              <img src="badges/osep.png" alt="Badge OSEP" loading="lazy" width="96" height="96">
-              <span class="badge-title">OSEP</span>
-              <span class="badge-sub">Offensive Security</span>
-              <div class="badge-prog">
-                <span class="badge-pct">0%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
-              </div>
-            </li>
-
-            <li class="badge-card upcoming">
-              <img src="badges/osed.png" alt="Badge OSED" loading="lazy" width="96" height="96">
-              <span class="badge-title">OSED</span>
-              <span class="badge-sub">Offensive Security</span>
-              <div class="badge-prog">
-                <span class="badge-pct">0%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
-              </div>
-            </li>
-
-            <li class="badge-card upcoming">
-              <img src="badges/osee.png" alt="Badge OSEE" loading="lazy" width="96" height="96">
-              <span class="badge-title">OSEE</span>
-              <span class="badge-sub">Offensive Security</span>
-              <div class="badge-prog">
-                <span class="badge-pct">0%</span>
-                <div class="ctt-bar-track"><div class="ctt-bar-fill bar-low" data-fill="0%"></div></div>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <section id="contato" aria-labelledby="h-contato">
       <h2 id="h-contato">Contato</h2>
       <p>Conecte-se comigo:</p>
       <div class="contact-links">
-        <a href="mailto:pgwerneck5@outlook.com" class="btn">Email</a>
+        <a href="mailto:pgwerneck5@gmail.com" class="btn">Email</a>
         <a href="https://linkedin.com/in/pgw-script" target="_blank" class="btn" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/5kr1pt" target="_blank" class="btn" rel="noopener noreferrer">GitHub</a>
         <a href="https://tryhackme.com/p/krpt" target="_blank" class="btn" rel="noopener noreferrer">TryHackMe</a>
         <a href="cv.pdf" target="_blank" class="btn" rel="noopener noreferrer">Currículo</a><br>
-		<a href="https://youtu.be/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ" target="_blank" class="btn" rel="noopener noreferrer">Free OSCP Voucher</a>  
+        <a href="https://youtu.be/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ" target="_blank" class="btn" rel="noopener noreferrer">Free OSCP Voucher</a>  
       </div>
     </section>
   </main>
