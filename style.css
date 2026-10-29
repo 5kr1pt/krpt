@@ -711,6 +711,8 @@ section h2::after {
 }
 .sev--high { color: #fdba74; background: rgba(251, 146, 60, .12); border-color: rgba(251, 146, 60, .4); }
 .sev--medium { color: #fde047; background: rgba(250, 204, 21, .1); border-color: rgba(250, 204, 21, .35); }
+.sev--critical { color: #fca5a5; background: rgba(239, 68, 68, .12); border-color: rgba(239, 68, 68, .45); }
+.sev--low { color: #86efac; background: rgba(74, 222, 128, .1); border-color: rgba(74, 222, 128, .35); }
 
 /* Linha de crédito (Wazuh) */
 .cve-credit {
@@ -879,6 +881,8 @@ section h2::after {
 .cve-row-head h4 { margin: 0; color: var(--accent-color); font: 700 1rem 'Roboto'; }
 .cve-row-head .cve-id { margin: 0; font-size: .8rem; font-weight: 600; color: var(--text-color); }
 .cve-row .cve-links { justify-content: flex-start; }
+/* Selo no lugar dos links: sem isso o grid estica ele na largura toda no celular */
+.cve-row > .cve-status { justify-self: start; }
 @media (min-width: 768px) {
   .cve-row .cve-links { justify-content: flex-end; flex-wrap: nowrap; }
 }
